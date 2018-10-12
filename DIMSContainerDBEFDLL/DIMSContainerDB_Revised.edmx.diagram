@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="611eb9dde58d4cd4883f61edfa918dcd" Name="Diagram1">
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.CameraDtlsTbl" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.CameraPositionMaster" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.ContainerTransaction" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.ContainerTypeMaster" Width="1.5" PointX="3.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.DamageTransaction" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.DamageTypeMaster" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.LaneMaster" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.ShippingLineMaster" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.UserMaster" Width="1.5" PointX="3.75" PointY="19.5" IsExpanded="true" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_CameraDtlsTbl_CameraPositionMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_CameraIPDetails_GateDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_ContainerTransactions_ContainerTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_ContainerTransactions_DamageTransaction" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_ContainerTransactions_LaneMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_ContainerTransactions_ShippingLineMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_ContainerTransactions_UserMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.RoleMaster" Width="1.5" PointX="1.5" PointY="20.5" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.RoleScreenMapping" Width="1.5" PointX="6.75" PointY="20.375" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.ScreenMaster" Width="1.5" PointX="4.5" PointY="24.5" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_RoleScreenMapping_RoleID" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_UserMaster_RoleMaster" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_RoleScreenMapping_ScreenMaster" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.ApplicationConfig" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.OwnerCodeMaster1" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.DamageTransactionDetail" Width="1.5" PointX="6" PointY="10" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_DamageTransactionDetails_CameraPositionMaster" />
+        <AssociationConnector Association="DIMContainerDB_RevisedModel.FK_DamageTransactionDetails_DamageTransaction" />
+        <EntityTypeShape EntityType="DIMContainerDB_RevisedModel.sysdiagram" Width="1.5" PointX="8.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

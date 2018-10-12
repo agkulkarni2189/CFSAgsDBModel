@@ -1,0 +1,11 @@
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\DIMSContainerDBEFDLL.dll.config
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\DIMSContainerDBEFDLL.dll
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\DIMSContainerDBEFDLL.pdb
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\EntityFramework.dll
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\EntityFramework.SqlServer.dll
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\EntityFramework.xml
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\bin\x64\Debug\EntityFramework.SqlServer.xml
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\obj\x64\Debug\DIMSContainerDBEFDLL.csprojResolveAssemblyReference.cache
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\obj\x64\Debug\DIMSContainerDBEFDLL.csproj.CoreCompileInputs.cache
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\obj\x64\Debug\DIMSContainerDBEFDLL.dll
+D:\Aniket\CFSWebAGS\DIMSContainerDBEFDLL\DIMSContainerDBEFDLL\obj\x64\Debug\DIMSContainerDBEFDLL.pdb

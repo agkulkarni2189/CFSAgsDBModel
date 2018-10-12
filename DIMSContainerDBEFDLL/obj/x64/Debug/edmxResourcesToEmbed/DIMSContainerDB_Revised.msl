@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DIMContainerDB_RevisedModelStoreContainer" CdmEntityContainer="DIMContainerDB_RevisedEntities">
+    <EntitySetMapping Name="CameraDtlsTbls">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.CameraDtlsTbl">
+        <MappingFragment StoreEntitySet="CameraDtlsTbl">
+          <ScalarProperty Name="CameraID" ColumnName="CameraID" />
+          <ScalarProperty Name="CameraIP" ColumnName="CameraIP" />
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CameraPositionMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.CameraPositionMaster">
+        <MappingFragment StoreEntitySet="CameraPositionMaster">
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+          <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+          <ScalarProperty Name="ContainerVisible" ColumnName="ContainerVisible" />
+          <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContainerTransactions">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.ContainerTransaction">
+        <MappingFragment StoreEntitySet="ContainerTransactions">
+          <ScalarProperty Name="TransID" ColumnName="TransID" />
+          <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+          <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+          <ScalarProperty Name="ContainerDmgd" ColumnName="ContainerDmgd" />
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="ContainerCode" ColumnName="ContainerCode" />
+          <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+          <ScalarProperty Name="VehicleNo" ColumnName="VehicleNo" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="BATNo" ColumnName="BATNo" />
+          <ScalarProperty Name="Displayed" ColumnName="Displayed" />
+          <ScalarProperty Name="DIRLocation" ColumnName="DIRLocation" />
+          <ScalarProperty Name="TrailerTransID" ColumnName="TrailerTransID" />
+          <ScalarProperty Name="SequnceOfContan" ColumnName="SequnceOfContan" />
+          <ScalarProperty Name="EmailImg" ColumnName="EmailImg" />
+          <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
+          <ScalarProperty Name="IsRotateImages" ColumnName="IsRotateImages" />
+          <ScalarProperty Name="CancelStatus" ColumnName="CancelStatus" />
+          <ScalarProperty Name="IsManualTransaction" ColumnName="IsManualTransaction" />
+          <ScalarProperty Name="IsReportCreated" ColumnName="IsReportCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContainerTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.ContainerTypeMaster">
+        <MappingFragment StoreEntitySet="ContainerTypeMaster">
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTransactions">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.DamageTransaction">
+        <MappingFragment StoreEntitySet="DamageTransaction">
+          <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+          <ScalarProperty Name="RemarkCam1" ColumnName="RemarkCam1" />
+          <ScalarProperty Name="RemarkCam2" ColumnName="RemarkCam2" />
+          <ScalarProperty Name="RemarkCam3" ColumnName="RemarkCam3" />
+          <ScalarProperty Name="RemarkCam4" ColumnName="RemarkCam4" />
+          <ScalarProperty Name="RemarkCam5" ColumnName="RemarkCam5" />
+          <ScalarProperty Name="RemarkCam6" ColumnName="RemarkCam6" />
+          <ScalarProperty Name="RemarkCam7" ColumnName="RemarkCam7" />
+          <ScalarProperty Name="CommonRemark" ColumnName="CommonRemark" />
+          <ScalarProperty Name="DmgdTypeCam1" ColumnName="DmgdTypeCam1" />
+          <ScalarProperty Name="DmgdTypeCam2" ColumnName="DmgdTypeCam2" />
+          <ScalarProperty Name="DmgdTypeCam3" ColumnName="DmgdTypeCam3" />
+          <ScalarProperty Name="DmgdTypeCam4" ColumnName="DmgdTypeCam4" />
+          <ScalarProperty Name="DmgdTypeCam5" ColumnName="DmgdTypeCam5" />
+          <ScalarProperty Name="DmgdTypeCam6" ColumnName="DmgdTypeCam6" />
+          <ScalarProperty Name="DmgdTypeCam7" ColumnName="DmgdTypeCam7" />
+          <ScalarProperty Name="CommonDmgTypes" ColumnName="CommonDmgTypes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.DamageTypeMaster">
+        <MappingFragment StoreEntitySet="DamageTypeMaster">
+          <ScalarProperty Name="DmgTypeid" ColumnName="DmgTypeid" />
+          <ScalarProperty Name="DmgTypeName" ColumnName="DmgTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LaneMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.LaneMaster">
+        <MappingFragment StoreEntitySet="LaneMaster">
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="TypeOfGate" ColumnName="TypeOfGate" />
+          <ScalarProperty Name="LaneName" ColumnName="LaneName" />
+          <ScalarProperty Name="IsBusy" ColumnName="IsBusy" />
+          <ScalarProperty Name="SystemIP" ColumnName="SystemIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingLineMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.ShippingLineMaster">
+        <MappingFragment StoreEntitySet="ShippingLineMaster">
+          <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+          <ScalarProperty Name="ShippingLineName" ColumnName="ShippingLineName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="faxno" ColumnName="faxno" />
+          <ScalarProperty Name="emailid1" ColumnName="emailid1" />
+          <ScalarProperty Name="emailid2" ColumnName="emailid2" />
+          <ScalarProperty Name="emailid3" ColumnName="emailid3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.UserMaster">
+        <MappingFragment StoreEntitySet="UserMaster">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLoggedin" ColumnName="IsLoggedin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.RoleMaster">
+        <MappingFragment StoreEntitySet="RoleMaster">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleScreenMappings">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.RoleScreenMapping">
+        <MappingFragment StoreEntitySet="RoleScreenMapping">
+          <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScreenMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.ScreenMaster">
+        <MappingFragment StoreEntitySet="ScreenMaster">
+          <ScalarProperty Name="ScreenUrl" ColumnName="ScreenUrl" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationConfigs">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.ApplicationConfig">
+        <MappingFragment StoreEntitySet="ApplicationConfig">
+          <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnerCodeMaster1">
+      <EntityTypeMapping TypeName="DIMContainerDB_RevisedModel.OwnerCodeMaster1">
+        <MappingFragment StoreEntitySet="OwnerCodeMaster">
+          <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetScreensFromRoleID" FunctionName="DIMContainerDB_RevisedModel.Store.sp_GetScreensFromRoleID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DIMContainerDB_RevisedModel.sp_GetScreensFromRoleID_Result">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="ScreenUrl" ColumnName="ScreenUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CameraPositionID1" FunctionName="DIMContainerDB_RevisedModel.Store.CameraPositionID" />
+    <FunctionImportMapping FunctionImportName="fetch_image_details1" FunctionName="DIMContainerDB_RevisedModel.Store.fetch_image_details" />
+    <FunctionImportMapping FunctionImportName="savecamerapositionngdata1" FunctionName="DIMContainerDB_RevisedModel.Store.savecamerapositionngdata" />
+    <FunctionImportMapping FunctionImportName="spsavecameradata1" FunctionName="DIMContainerDB_RevisedModel.Store.spsavecameradata" />
+    <FunctionImportMapping FunctionImportName="spsavelanedata1" FunctionName="DIMContainerDB_RevisedModel.Store.spsavelanedata" />
+    <FunctionImportMapping FunctionImportName="spsaveshippinglinedata1" FunctionName="DIMContainerDB_RevisedModel.Store.spsaveshippinglinedata" />
+    <FunctionImportMapping FunctionImportName="spupdatecamerapositioningdata1" FunctionName="DIMContainerDB_RevisedModel.Store.spupdatecamerapositioningdata" />
+    <FunctionImportMapping FunctionImportName="updatecamera1" FunctionName="DIMContainerDB_RevisedModel.Store.updatecamera" />
+    <FunctionImportMapping FunctionImportName="UpdateEmptytransaction1" FunctionName="DIMContainerDB_RevisedModel.Store.UpdateEmptytransaction" />
+    <FunctionImportMapping FunctionImportName="updatelanedata1" FunctionName="DIMContainerDB_RevisedModel.Store.updatelanedata" />
+    <FunctionImportMapping FunctionImportName="updateshippingline1" FunctionName="DIMContainerDB_RevisedModel.Store.updateshippingline" />
+  </EntityContainerMapping>
+</Mapping>
