@@ -15,8 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Debug|x64.Build.0 = Debug|Any CPU
+		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Debug|x64.ActiveCfg = Debug|x64
+		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Debug|x64.Build.0 = Debug|x64
 		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Release|Any CPU.Build.0 = Release|Any CPU
 		{78922E6F-2120-47C8-9579-3CAFD61D4390}.Release|x64.ActiveCfg = Release|x64

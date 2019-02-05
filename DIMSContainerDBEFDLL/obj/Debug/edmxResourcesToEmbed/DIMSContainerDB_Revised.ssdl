@@ -8,6 +8,19 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' 
     </Key>
     <Property Name="ShiftStartTime" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ApplicationMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ApplicationName" />
+      <PropertyRef Name="AuthToken" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ApplicationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ApplicationDesc" Type="nvarchar" MaxLength="100" />
+    <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="CameraDtlsTbl">
     <Key>
       <PropertyRef Name="CameraID" />
@@ -17,6 +30,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' 
     <Property Name="LaneID" Type="int" Nullable="false" />
     <Property Name="PositionID" Type="int" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="CameraPositionMaster">
     <Key>
@@ -27,6 +41,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' 
     <Property Name="PositionDescription" Type="nvarchar" MaxLength="200" />
     <Property Name="ContainerVisible" Type="int" Nullable="false" />
     <Property Name="ImageIndex" Type="int" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="ContainerTransactions">
     <Key>
@@ -62,6 +77,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' 
     </Key>
     <Property Name="ContainerTypeID" Type="int" Nullable="false" />
     <Property Name="ContainerTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="DamageTransaction">
     <Key>
@@ -102,6 +118,39 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' 
     </Key>
     <Property Name="DmgTypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DmgTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="CreatorUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="DeviceMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DeviceName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+    <Property Name="DeviceIP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DeviceMACAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeviceTypeMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DeviceTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.LaneDeviceMappingMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LaneDeviceMappingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="LaneID" />
+      <PropertyRef Name="DeviceID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LaneID" Type="int" Nullable="false" />
+    <Property Name="DeviceID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="LaneMaster">
     <Key>
@@ -110,8 +159,49 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' 
     <Property Name="LaneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TypeOfGate" Type="int" Nullable="false" />
     <Property Name="LaneName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="IsBusy" Type="int" Nullable="false" />
-    <Property Name="SystemIP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
+    <Property Name="TransactionsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsBusy" Type="bit" />
+  </EntityType>
+  <EntityType Name="LocationMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocationTypeID" Type="int" Nullable="false" />
+    <Property Name="LocationDesc" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatorUserID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.LocationTypeDeviceTypeMappingMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LocationTypeDeviceTypeMappingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="LocationTypeID" />
+      <PropertyRef Name="DeviceTypeID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LocationTypeID" Type="int" Nullable="false" />
+    <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTypeMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LocationTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsGate" Type="bit" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" Nullable="false" />
+    <Property Name="IsTransactionEnabled" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTypeRoleMappingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LocationTypeID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -122,6 +212,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     </Key>
     <Property Name="OwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OwnerCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="RoleMaster">
     <Key>
@@ -130,6 +221,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsSuperUser" Type="bit" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="RoleScreenMapping">
     <Key>
@@ -146,6 +238,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ScreenName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ScreenUrl" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="ShippingLineMaster">
     <Key>
@@ -159,6 +252,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     <Property Name="emailid1" Type="nvarchar" MaxLength="50" />
     <Property Name="emailid2" Type="nvarchar" MaxLength="50" />
     <Property Name="emailid3" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -185,6 +279,7 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="IsLoggedin" Type="bit" Nullable="false" />
     <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="CreatorUserID" Type="int" />
   </EntityType>
   <Association Name="FK_CameraDtlsTbl_CameraPositionMaster">
     <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="1" />
@@ -198,6 +293,18 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_CameraDtlsTbl_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="CameraDtlsTbl" Type="Self.CameraDtlsTbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CameraDtlsTbl">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CameraIPDetails_GateDetails">
     <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="1" />
     <End Role="CameraDtlsTbl" Type="Self.CameraDtlsTbl" Multiplicity="*" />
@@ -207,6 +314,18 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       </Principal>
       <Dependent Role="CameraDtlsTbl">
         <PropertyRef Name="LaneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CameraPositionMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CameraPositionMaster">
+        <PropertyRef Name="CreatorUserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -270,6 +389,18 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ContainerTypeMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="ContainerTypeMaster" Type="Self.ContainerTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ContainerTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DamageTransactionDetails_CameraPositionMaster">
     <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="0..1" />
     <End Role="DamageTransactionDetails" Type="Self.DamageTransactionDetails" Multiplicity="*" />
@@ -291,6 +422,186 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       </Principal>
       <Dependent Role="DamageTransactionDetails">
         <PropertyRef Name="DmgDtlsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DamageTypeMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="DamageTypeMaster" Type="Self.DamageTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DamageTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceMaster_DeviceTypeMaster">
+    <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+    <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceMaster">
+        <PropertyRef Name="DeviceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+    <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DeviceMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceTypeMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DeviceTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LaneDeviceMappingMaster_DeviceMaster">
+    <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="1" />
+    <End Role="LaneDeviceMappingMaster" Type="Self.LaneDeviceMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LaneDeviceMappingMaster">
+        <PropertyRef Name="DeviceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LaneDeviceMappingMaster_LaneMaster">
+    <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="1" />
+    <End Role="LaneDeviceMappingMaster" Type="Self.LaneDeviceMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LaneMaster">
+        <PropertyRef Name="LaneID" />
+      </Principal>
+      <Dependent Role="LaneDeviceMappingMaster">
+        <PropertyRef Name="LaneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationMaster_LocationTypeMaster">
+    <End Role="LocationMaster" Type="Self.LocationMaster" Multiplicity="1" />
+    <End Role="LocationMaster1" Type="Self.LocationMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationMaster1">
+        <PropertyRef Name="LocationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+    <End Role="LocationMaster" Type="Self.LocationMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LocationMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+    <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+    <End Role="LocationTypeDeviceTypeMappingMaster" Type="Self.LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+        <PropertyRef Name="DeviceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+    <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+    <End Role="LocationTypeDeviceTypeMappingMaster" Type="Self.LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+        <PropertyRef Name="LocationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+    <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LocationTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+    <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+    <End Role="LocationTypeRoleMappingMaster" Type="Self.LocationTypeRoleMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeRoleMappingMaster">
+        <PropertyRef Name="LocationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeRoleMappingMaster_RoleMaster">
+    <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+    <End Role="LocationTypeRoleMappingMaster" Type="Self.LocationTypeRoleMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeRoleMappingMaster">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OwnerCodeMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="OwnerCodeMaster" Type="Self.OwnerCodeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="OwnerCodeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RoleMaster">
+        <PropertyRef Name="CreatorUserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -322,6 +633,30 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ScreenMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="ScreenMaster" Type="Self.ScreenMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ScreenMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShippingLineMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+    <End Role="ShippingLineMaster" Type="Self.ShippingLineMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ShippingLineMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserMaster_RoleMaster">
     <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
     <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
@@ -331,6 +666,18 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       </Principal>
       <Dependent Role="UserMaster">
         <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMaster_UserMaster">
+    <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+    <End Role="UserMaster1" Type="Self.UserMaster" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserMaster1">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -450,7 +797,12 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     <EntitySet Name="DamageTransaction" EntityType="Self.DamageTransaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DamageTransactionDetails" EntityType="Self.DamageTransactionDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DamageTypeMaster" EntityType="Self.DamageTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceMaster" EntityType="Self.DeviceMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceTypeMaster" EntityType="Self.DeviceTypeMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LaneMaster" EntityType="Self.LaneMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationMaster" EntityType="Self.LocationMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationTypeMaster" EntityType="Self.LocationTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationTypeRoleMappingMaster" EntityType="Self.LocationTypeRoleMappingMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleScreenMapping" EntityType="Self.RoleScreenMapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ScreenMaster" EntityType="Self.ScreenMaster" Schema="dbo" store:Type="Tables" />
@@ -462,19 +814,50 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     [ApplicationConfig].[ShiftStartTime] AS [ShiftStartTime]
     FROM [dbo].[ApplicationConfig] AS [ApplicationConfig]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="ApplicationMaster" EntityType="Self.ApplicationMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ApplicationMaster].[ID] AS [ID], 
+    [ApplicationMaster].[ApplicationName] AS [ApplicationName], 
+    [ApplicationMaster].[ApplicationDesc] AS [ApplicationDesc], 
+    [ApplicationMaster].[AuthToken] AS [AuthToken]
+    FROM [dbo].[ApplicationMaster] AS [ApplicationMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LaneDeviceMappingMaster" EntityType="Self.LaneDeviceMappingMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LaneDeviceMappingMaster].[ID] AS [ID], 
+    [LaneDeviceMappingMaster].[LaneID] AS [LaneID], 
+    [LaneDeviceMappingMaster].[DeviceID] AS [DeviceID]
+    FROM [dbo].[LaneDeviceMappingMaster] AS [LaneDeviceMappingMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LocationTypeDeviceTypeMappingMaster" EntityType="Self.LocationTypeDeviceTypeMappingMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LocationTypeDeviceTypeMappingMaster].[ID] AS [ID], 
+    [LocationTypeDeviceTypeMappingMaster].[LocationTypeID] AS [LocationTypeID], 
+    [LocationTypeDeviceTypeMappingMaster].[DeviceTypeID] AS [DeviceTypeID]
+    FROM [dbo].[LocationTypeDeviceTypeMappingMaster] AS [LocationTypeDeviceTypeMappingMaster]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="OwnerCodeMaster" EntityType="Self.OwnerCodeMaster" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [OwnerCodeMaster].[OwnerID] AS [OwnerID], 
-    [OwnerCodeMaster].[OwnerCode] AS [OwnerCode]
+    [OwnerCodeMaster].[OwnerCode] AS [OwnerCode], 
+    [OwnerCodeMaster].[CreatorUserID] AS [CreatorUserID]
     FROM [dbo].[OwnerCodeMaster] AS [OwnerCodeMaster]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_CameraDtlsTbl_CameraPositionMaster" Association="Self.FK_CameraDtlsTbl_CameraPositionMaster">
       <End Role="CameraPositionMaster" EntitySet="CameraPositionMaster" />
       <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbl" />
     </AssociationSet>
+    <AssociationSet Name="FK_CameraDtlsTbl_UserMaster" Association="Self.FK_CameraDtlsTbl_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbl" />
+    </AssociationSet>
     <AssociationSet Name="FK_CameraIPDetails_GateDetails" Association="Self.FK_CameraIPDetails_GateDetails">
       <End Role="LaneMaster" EntitySet="LaneMaster" />
       <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CameraPositionMaster_UserMaster" Association="Self.FK_CameraPositionMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="CameraPositionMaster" EntitySet="CameraPositionMaster" />
     </AssociationSet>
     <AssociationSet Name="FK_ContainerTransactions_ContainerTypeMaster" Association="Self.FK_ContainerTransactions_ContainerTypeMaster">
       <End Role="ContainerTypeMaster" EntitySet="ContainerTypeMaster" />
@@ -496,6 +879,10 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       <End Role="UserMaster" EntitySet="UserMaster" />
       <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
     </AssociationSet>
+    <AssociationSet Name="FK_ContainerTypeMaster_UserMaster" Association="Self.FK_ContainerTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="ContainerTypeMaster" EntitySet="ContainerTypeMaster" />
+    </AssociationSet>
     <AssociationSet Name="FK_DamageTransactionDetails_CameraPositionMaster" Association="Self.FK_DamageTransactionDetails_CameraPositionMaster">
       <End Role="CameraPositionMaster" EntitySet="CameraPositionMaster" />
       <End Role="DamageTransactionDetails" EntitySet="DamageTransactionDetails" />
@@ -503,6 +890,66 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
     <AssociationSet Name="FK_DamageTransactionDetails_DamageTransaction" Association="Self.FK_DamageTransactionDetails_DamageTransaction">
       <End Role="DamageTransaction" EntitySet="DamageTransaction" />
       <End Role="DamageTransactionDetails" EntitySet="DamageTransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DamageTypeMaster_UserMaster" Association="Self.FK_DamageTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="DamageTypeMaster" EntitySet="DamageTypeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceMaster_DeviceTypeMaster" Association="Self.FK_DeviceMaster_DeviceTypeMaster">
+      <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+      <End Role="DeviceMaster" EntitySet="DeviceMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceMaster_UserMaster" Association="Self.FK_DeviceMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="DeviceMaster" EntitySet="DeviceMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceTypeMaster_UserMaster" Association="Self.FK_DeviceTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LaneDeviceMappingMaster_DeviceMaster" Association="Self.FK_LaneDeviceMappingMaster_DeviceMaster">
+      <End Role="DeviceMaster" EntitySet="DeviceMaster" />
+      <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LaneDeviceMappingMaster_LaneMaster" Association="Self.FK_LaneDeviceMappingMaster_LaneMaster">
+      <End Role="LaneMaster" EntitySet="LaneMaster" />
+      <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationMaster_LocationTypeMaster" Association="Self.FK_LocationMaster_LocationTypeMaster">
+      <End Role="LocationMaster" EntitySet="LocationMaster" />
+      <End Role="LocationMaster1" EntitySet="LocationMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationMaster_UserMaster" Association="Self.FK_LocationMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="LocationMaster" EntitySet="LocationMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" Association="Self.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+      <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+      <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" Association="Self.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+      <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+      <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeMaster_UserMaster" Association="Self.FK_LocationTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster" Association="Self.FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+      <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+      <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeRoleMappingMaster_RoleMaster" Association="Self.FK_LocationTypeRoleMappingMaster_RoleMaster">
+      <End Role="RoleMaster" EntitySet="RoleMaster" />
+      <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OwnerCodeMaster_UserMaster" Association="Self.FK_OwnerCodeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="OwnerCodeMaster" EntitySet="OwnerCodeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleMaster_UserMaster" Association="Self.FK_RoleMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="RoleMaster" EntitySet="RoleMaster" />
     </AssociationSet>
     <AssociationSet Name="FK_RoleScreenMapping_RoleID" Association="Self.FK_RoleScreenMapping_RoleID">
       <End Role="RoleMaster" EntitySet="RoleMaster" />
@@ -512,9 +959,21 @@ warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' do
       <End Role="ScreenMaster" EntitySet="ScreenMaster" />
       <End Role="RoleScreenMapping" EntitySet="RoleScreenMapping" />
     </AssociationSet>
+    <AssociationSet Name="FK_ScreenMaster_UserMaster" Association="Self.FK_ScreenMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="ScreenMaster" EntitySet="ScreenMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShippingLineMaster_UserMaster" Association="Self.FK_ShippingLineMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="ShippingLineMaster" EntitySet="ShippingLineMaster" />
+    </AssociationSet>
     <AssociationSet Name="FK_UserMaster_RoleMaster" Association="Self.FK_UserMaster_RoleMaster">
       <End Role="RoleMaster" EntitySet="RoleMaster" />
       <End Role="UserMaster" EntitySet="UserMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMaster_UserMaster" Association="Self.FK_UserMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMaster" />
+      <End Role="UserMaster1" EntitySet="UserMaster" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

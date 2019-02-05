@@ -25,15 +25,17 @@ namespace DIMSContainerDBEFDLL
         public string LastName { get; set; }
         public string ContactNo { get; set; }
         public string EmailId { get; set; }
-        public string Designation { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
         public bool IsLoggedin { get; set; }
-        public int RoleID { get; set; }
+        public Nullable<int> DeviceID { get; set; }
+        public Nullable<int> DesignationID { get; set; }
+        public Nullable<int> ReportsTo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContainerTransaction> ContainerTransactions { get; set; }
-        public virtual RoleMaster RoleMaster { get; set; }
+        public virtual DesignationMaster DesignationMaster { get; set; }
+        public virtual DesignationMaster DesignationMaster1 { get; set; }
     }
 }

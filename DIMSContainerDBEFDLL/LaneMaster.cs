@@ -19,17 +19,21 @@ namespace DIMSContainerDBEFDLL
         {
             this.CameraDtlsTbls = new HashSet<CameraDtlsTbl>();
             this.ContainerTransactions = new HashSet<ContainerTransaction>();
+            this.LaneDeviceMappingMasters = new HashSet<LaneDeviceMappingMaster>();
         }
     
         public int LaneID { get; set; }
         public int TypeOfGate { get; set; }
         public string LaneName { get; set; }
-        public int IsBusy { get; set; }
-        public string SystemIP { get; set; }
+        public Nullable<int> CreatorUserID { get; set; }
+        public bool TransactionsEnabled { get; set; }
+        public Nullable<bool> IsBusy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CameraDtlsTbl> CameraDtlsTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContainerTransaction> ContainerTransactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LaneDeviceMappingMaster> LaneDeviceMappingMasters { get; set; }
     }
 }

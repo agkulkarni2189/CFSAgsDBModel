@@ -11,6 +11,8 @@
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CameraPositionMaster" Relationship="Self.FK_CameraDtlsTbl_CameraPositionMaster" FromRole="CameraDtlsTbl" ToRole="CameraPositionMaster" />
     <NavigationProperty Name="LaneMaster" Relationship="Self.FK_CameraIPDetails_GateDetails" FromRole="CameraDtlsTbl" ToRole="LaneMaster" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_CameraDtlsTbl_UserMaster" FromRole="CameraDtlsTbl" ToRole="UserMaster" />
   </EntityType>
   <EntityType Name="CameraPositionMaster">
     <Key>
@@ -23,6 +25,8 @@
     <Property Name="ImageIndex" Type="Int32" />
     <NavigationProperty Name="CameraDtlsTbls" Relationship="Self.FK_CameraDtlsTbl_CameraPositionMaster" FromRole="CameraPositionMaster" ToRole="CameraDtlsTbl" />
     <NavigationProperty Name="DamageTransactionDetails" Relationship="DIMContainerDB_RevisedModel.FK_DamageTransactionDetails_CameraPositionMaster" FromRole="CameraPositionMaster" ToRole="DamageTransactionDetail" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_CameraPositionMaster_UserMaster" FromRole="CameraPositionMaster" ToRole="UserMaster" />
   </EntityType>
   <EntityType Name="ContainerTransaction">
     <Key>
@@ -64,6 +68,8 @@
     <Property Name="ContainerTypeID" Type="Int32" Nullable="false" />
     <Property Name="ContainerTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_ContainerTypeMaster" FromRole="ContainerTypeMaster" ToRole="ContainerTransactions" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_ContainerTypeMaster_UserMaster" FromRole="ContainerTypeMaster" ToRole="UserMaster" />
   </EntityType>
   <EntityType Name="DamageTransaction">
     <Key>
@@ -95,6 +101,8 @@
     </Key>
     <Property Name="DmgTypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DmgTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_DamageTypeMaster_UserMaster" FromRole="DamageTypeMaster" ToRole="UserMaster" />
   </EntityType>
   <EntityType Name="LaneMaster">
     <Key>
@@ -103,10 +111,13 @@
     <Property Name="LaneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TypeOfGate" Type="Int32" Nullable="false" />
     <Property Name="LaneName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IsBusy" Type="Int32" Nullable="false" />
-    <Property Name="SystemIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="CameraDtlsTbls" Relationship="Self.FK_CameraIPDetails_GateDetails" FromRole="LaneMaster" ToRole="CameraDtlsTbl" />
     <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_LaneMaster" FromRole="LaneMaster" ToRole="ContainerTransactions" />
+    <NavigationProperty Name="LaneDeviceMappingMasters" Relationship="DIMContainerDB_RevisedModel.FK_LaneDeviceMappingMaster_LaneMaster" FromRole="LaneMaster" ToRole="LaneDeviceMappingMaster" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_LaneMaster_UserMaster" FromRole="LaneMaster" ToRole="UserMaster" />
+    <Property Name="TransactionsEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="IsBusy" Type="Boolean" />
   </EntityType>
   <EntityType Name="ShippingLineMaster">
     <Key>
@@ -121,6 +132,8 @@
     <Property Name="emailid2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="emailid3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_ShippingLineMaster" FromRole="ShippingLineMaster" ToRole="ContainerTransactions" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_ShippingLineMaster_UserMaster" FromRole="ShippingLineMaster" ToRole="UserMaster" />
   </EntityType>
   <EntityType Name="UserMaster">
     <Key>
@@ -139,6 +152,21 @@
     <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_UserMaster" FromRole="UserMaster" ToRole="ContainerTransactions" />
     <Property Name="RoleID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="RoleMaster" Relationship="DIMContainerDB_RevisedModel.FK_UserMaster_RoleMaster" FromRole="UserMaster" ToRole="RoleMaster" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="CameraDtlsTbls" Relationship="DIMContainerDB_RevisedModel.FK_CameraDtlsTbl_UserMaster" FromRole="UserMaster" ToRole="CameraDtlsTbl" />
+    <NavigationProperty Name="CameraPositionMasters" Relationship="DIMContainerDB_RevisedModel.FK_CameraPositionMaster_UserMaster" FromRole="UserMaster" ToRole="CameraPositionMaster" />
+    <NavigationProperty Name="ContainerTypeMasters" Relationship="DIMContainerDB_RevisedModel.FK_ContainerTypeMaster_UserMaster" FromRole="UserMaster" ToRole="ContainerTypeMaster" />
+    <NavigationProperty Name="DamageTypeMasters" Relationship="DIMContainerDB_RevisedModel.FK_DamageTypeMaster_UserMaster" FromRole="UserMaster" ToRole="DamageTypeMaster" />
+    <NavigationProperty Name="DeviceMasters" Relationship="DIMContainerDB_RevisedModel.FK_DeviceMaster_UserMaster" FromRole="UserMaster" ToRole="DeviceMaster" />
+    <NavigationProperty Name="DeviceTypeMasters" Relationship="DIMContainerDB_RevisedModel.FK_DeviceTypeMaster_UserMaster" FromRole="UserMaster" ToRole="DeviceTypeMaster" />
+    <NavigationProperty Name="LaneMasters" Relationship="DIMContainerDB_RevisedModel.FK_LaneMaster_UserMaster" FromRole="UserMaster" ToRole="LaneMaster" />
+    <NavigationProperty Name="RoleMasters" Relationship="DIMContainerDB_RevisedModel.FK_RoleMaster_UserMaster" FromRole="UserMaster" ToRole="RoleMaster" />
+    <NavigationProperty Name="ScreenMasters" Relationship="DIMContainerDB_RevisedModel.FK_ScreenMaster_UserMaster" FromRole="UserMaster" ToRole="ScreenMaster" />
+    <NavigationProperty Name="ShippingLineMasters" Relationship="DIMContainerDB_RevisedModel.FK_ShippingLineMaster_UserMaster" FromRole="UserMaster" ToRole="ShippingLineMaster" />
+    <NavigationProperty Name="OwnerCodeMasters" Relationship="DIMContainerDB_RevisedModel.FK_OwnerCodeMaster_UserMaster" FromRole="UserMaster" ToRole="OwnerCodeMaster1" />
+    <NavigationProperty Name="UserMaster1" Relationship="DIMContainerDB_RevisedModel.FK_UserMaster_UserMaster" FromRole="UserMaster" ToRole="UserMaster1" />
+    <NavigationProperty Name="UserMaster2" Relationship="DIMContainerDB_RevisedModel.FK_UserMaster_UserMaster" FromRole="UserMaster1" ToRole="UserMaster" />
+    <NavigationProperty Name="LocationTypeMasters" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeMaster_UserMaster" FromRole="UserMaster" ToRole="LocationTypeMaster" />
   </EntityType>
   <Association Name="FK_CameraDtlsTbl_CameraPositionMaster">
     <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="1" />
@@ -459,6 +487,106 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
     <FunctionImport Name="sp_StoreDamageDetails" />
+    <EntitySet Name="DeviceMasters" EntityType="DIMContainerDB_RevisedModel.DeviceMaster" />
+    <EntitySet Name="DeviceTypeMasters" EntityType="DIMContainerDB_RevisedModel.DeviceTypeMaster" />
+    <EntitySet Name="LaneDeviceMappingMasters" EntityType="DIMContainerDB_RevisedModel.LaneDeviceMappingMaster" />
+    <AssociationSet Name="FK_DeviceMaster_DeviceTypeMaster" Association="DIMContainerDB_RevisedModel.FK_DeviceMaster_DeviceTypeMaster">
+      <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+      <End Role="DeviceMaster" EntitySet="DeviceMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LaneDeviceMappingMaster_DeviceMaster" Association="DIMContainerDB_RevisedModel.FK_LaneDeviceMappingMaster_DeviceMaster">
+      <End Role="DeviceMaster" EntitySet="DeviceMasters" />
+      <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LaneDeviceMappingMaster_LaneMaster" Association="DIMContainerDB_RevisedModel.FK_LaneDeviceMappingMaster_LaneMaster">
+      <End Role="LaneMaster" EntitySet="LaneMasters" />
+      <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CameraDtlsTbl_UserMaster" Association="DIMContainerDB_RevisedModel.FK_CameraDtlsTbl_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CameraPositionMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_CameraPositionMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="CameraPositionMaster" EntitySet="CameraPositionMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContainerTypeMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_ContainerTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="ContainerTypeMaster" EntitySet="ContainerTypeMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DamageTypeMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_DamageTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="DamageTypeMaster" EntitySet="DamageTypeMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_DeviceMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="DeviceMaster" EntitySet="DeviceMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceTypeMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_DeviceTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LaneMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_LaneMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="LaneMaster" EntitySet="LaneMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_RoleMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="RoleMaster" EntitySet="RoleMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScreenMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_ScreenMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="ScreenMaster" EntitySet="ScreenMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShippingLineMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_ShippingLineMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="ShippingLineMaster" EntitySet="ShippingLineMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OwnerCodeMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_OwnerCodeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="OwnerCodeMaster1" EntitySet="OwnerCodeMaster1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_UserMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="UserMaster1" EntitySet="UserMasters" />
+    </AssociationSet>
+    <EntitySet Name="LocationMasters" EntityType="DIMContainerDB_RevisedModel.LocationMaster" />
+    <EntitySet Name="LocationTypeMasters" EntityType="DIMContainerDB_RevisedModel.LocationTypeMaster" />
+    <AssociationSet Name="FK_LaneMaster_LocationMaster" Association="DIMContainerDB_RevisedModel.FK_LaneMaster_LocationMaster">
+      <End Role="LocationMaster" EntitySet="LocationMasters" />
+      <End Role="LaneMaster" EntitySet="LaneMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationMaster_LocationTypeMaster" Association="DIMContainerDB_RevisedModel.FK_LocationMaster_LocationTypeMaster">
+      <End Role="LocationMaster" EntitySet="LocationMasters" />
+      <End Role="LocationMaster1" EntitySet="LocationMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_LocationMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="LocationMaster" EntitySet="LocationMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeMaster_UserMaster" Association="DIMContainerDB_RevisedModel.FK_LocationTypeMaster_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+    </AssociationSet>
+    <EntitySet Name="LocationTypeRoleMappingMasters" EntityType="DIMContainerDB_RevisedModel.LocationTypeRoleMappingMaster" />
+    <EntitySet Name="ApplicationMasters" EntityType="DIMContainerDB_RevisedModel.ApplicationMaster" />
+    <EntitySet Name="LocationTypeDeviceTypeMappingMasters" EntityType="DIMContainerDB_RevisedModel.LocationTypeDeviceTypeMappingMaster" />
+    <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" Association="DIMContainerDB_RevisedModel.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+      <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+      <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" Association="DIMContainerDB_RevisedModel.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+      <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+      <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster" Association="DIMContainerDB_RevisedModel.FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+      <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+      <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocationTypeRoleMappingMaster_RoleMaster" Association="DIMContainerDB_RevisedModel.FK_LocationTypeRoleMappingMaster_RoleMaster">
+      <End Role="RoleMaster" EntitySet="RoleMasters" />
+      <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMasters" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="RoleMaster">
     <Key>
@@ -469,6 +597,9 @@
     <NavigationProperty Name="RoleScreenMappings" Relationship="DIMContainerDB_RevisedModel.FK_RoleScreenMapping_RoleID" FromRole="RoleMaster" ToRole="RoleScreenMapping" />
     <NavigationProperty Name="UserMasters" Relationship="DIMContainerDB_RevisedModel.FK_UserMaster_RoleMaster" FromRole="RoleMaster" ToRole="UserMaster" />
     <Property Name="IsSuperUser" Type="Boolean" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_RoleMaster_UserMaster" FromRole="RoleMaster" ToRole="UserMaster" />
+    <NavigationProperty Name="LocationTypeRoleMappingMasters" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeRoleMappingMaster_RoleMaster" FromRole="RoleMaster" ToRole="LocationTypeRoleMappingMaster" />
   </EntityType>
   <EntityType Name="RoleScreenMapping">
     <Key>
@@ -488,6 +619,8 @@
     <Property Name="ScreenName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ScreenUrl" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="RoleScreenMappings" Relationship="DIMContainerDB_RevisedModel.FK_RoleScreenMapping_ScreenMaster" FromRole="ScreenMaster" ToRole="RoleScreenMapping" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_ScreenMaster_UserMaster" FromRole="ScreenMaster" ToRole="UserMaster" />
   </EntityType>
   <Association Name="FK_RoleScreenMapping_RoleID">
     <End Type="DIMContainerDB_RevisedModel.RoleMaster" Role="RoleMaster" Multiplicity="1" />
@@ -538,6 +671,8 @@
     </Key>
     <Property Name="OwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="OwnerCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_OwnerCodeMaster_UserMaster" FromRole="OwnerCodeMaster1" ToRole="UserMaster" />
   </EntityType>
   <ComplexType Name="sp_GetScreensFromRoleID_Result">
     <Property Type="String" Name="RoleName" Nullable="false" MaxLength="50" />
@@ -602,4 +737,377 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="DeviceMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DeviceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="DeviceIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceMACAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DeviceTypeMaster" Relationship="DIMContainerDB_RevisedModel.FK_DeviceMaster_DeviceTypeMaster" FromRole="DeviceMaster" ToRole="DeviceTypeMaster" />
+    <NavigationProperty Name="LaneDeviceMappingMasters" Relationship="DIMContainerDB_RevisedModel.FK_LaneDeviceMappingMaster_DeviceMaster" FromRole="DeviceMaster" ToRole="LaneDeviceMappingMaster" />
+    <Property Name="CreatorUserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_DeviceMaster_UserMaster" FromRole="DeviceMaster" ToRole="UserMaster" />
+  </EntityType>
+  <EntityType Name="DeviceTypeMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DeviceTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DeviceMasters" Relationship="DIMContainerDB_RevisedModel.FK_DeviceMaster_DeviceTypeMaster" FromRole="DeviceTypeMaster" ToRole="DeviceMaster" />
+    <Property Name="CreatorUserID" Type="Int32" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_DeviceTypeMaster_UserMaster" FromRole="DeviceTypeMaster" ToRole="UserMaster" />
+    <NavigationProperty Name="LocationTypeDeviceTypeMappingMasters" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" FromRole="DeviceTypeMaster" ToRole="LocationTypeDeviceTypeMappingMaster" />
+  </EntityType>
+  <EntityType Name="LaneDeviceMappingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="LaneID" />
+      <PropertyRef Name="DeviceID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LaneID" Type="Int32" Nullable="false" />
+    <Property Name="DeviceID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DeviceMaster" Relationship="DIMContainerDB_RevisedModel.FK_LaneDeviceMappingMaster_DeviceMaster" FromRole="LaneDeviceMappingMaster" ToRole="DeviceMaster" />
+    <NavigationProperty Name="LaneMaster" Relationship="DIMContainerDB_RevisedModel.FK_LaneDeviceMappingMaster_LaneMaster" FromRole="LaneDeviceMappingMaster" ToRole="LaneMaster" />
+  </EntityType>
+  <Association Name="FK_DeviceMaster_DeviceTypeMaster">
+    <End Type="DIMContainerDB_RevisedModel.DeviceTypeMaster" Role="DeviceTypeMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.DeviceMaster" Role="DeviceMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceMaster">
+        <PropertyRef Name="DeviceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LaneDeviceMappingMaster_DeviceMaster">
+    <End Type="DIMContainerDB_RevisedModel.DeviceMaster" Role="DeviceMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LaneDeviceMappingMaster" Role="LaneDeviceMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LaneDeviceMappingMaster">
+        <PropertyRef Name="DeviceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LaneDeviceMappingMaster_LaneMaster">
+    <End Type="DIMContainerDB_RevisedModel.LaneMaster" Role="LaneMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LaneDeviceMappingMaster" Role="LaneDeviceMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LaneMaster">
+        <PropertyRef Name="LaneID" />
+      </Principal>
+      <Dependent Role="LaneDeviceMappingMaster">
+        <PropertyRef Name="LaneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CameraDtlsTbl_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.CameraDtlsTbl" Role="CameraDtlsTbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CameraDtlsTbl">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CameraPositionMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.CameraPositionMaster" Role="CameraPositionMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CameraPositionMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContainerTypeMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.ContainerTypeMaster" Role="ContainerTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ContainerTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DamageTypeMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.DamageTypeMaster" Role="DamageTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DamageTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.DeviceMaster" Role="DeviceMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DeviceMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceTypeMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.DeviceTypeMaster" Role="DeviceTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DeviceTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LaneMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.LaneMaster" Role="LaneMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LaneMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.RoleMaster" Role="RoleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RoleMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScreenMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.ScreenMaster" Role="ScreenMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ScreenMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShippingLineMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.ShippingLineMaster" Role="ShippingLineMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ShippingLineMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OwnerCodeMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.OwnerCodeMaster1" Role="OwnerCodeMaster1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="OwnerCodeMaster1">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserMaster1">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LocationMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LocationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="LocationDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorUserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LocationMaster1" Relationship="DIMContainerDB_RevisedModel.FK_LocationMaster_LocationTypeMaster" FromRole="LocationMaster" ToRole="LocationMaster1" />
+    <NavigationProperty Name="LocationMaster2" Relationship="DIMContainerDB_RevisedModel.FK_LocationMaster_LocationTypeMaster" FromRole="LocationMaster1" ToRole="LocationMaster" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_LocationMaster_UserMaster" FromRole="LocationMaster" ToRole="UserMaster" />
+  </EntityType>
+  <EntityType Name="LocationTypeMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LocationTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsGate" Type="Boolean" Nullable="false" />
+    <Property Name="CreatorUserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserMaster" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeMaster_UserMaster" FromRole="LocationTypeMaster" ToRole="UserMaster" />
+    <Property Name="IsTransactionEnabled" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LocationTypeDeviceTypeMappingMasters" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" FromRole="LocationTypeMaster" ToRole="LocationTypeDeviceTypeMappingMaster" />
+    <NavigationProperty Name="LocationTypeRoleMappingMasters" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeRoleMappingMaster_LocationTypeMaster" FromRole="LocationTypeMaster" ToRole="LocationTypeRoleMappingMaster" />
+  </EntityType>
+  <Association Name="FK_LaneMaster_LocationMaster">
+    <End Type="DIMContainerDB_RevisedModel.LocationMaster" Role="LocationMaster" Multiplicity="0..1" />
+    <End Type="DIMContainerDB_RevisedModel.LaneMaster" Role="LaneMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LaneMaster">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationMaster_LocationTypeMaster">
+    <End Type="DIMContainerDB_RevisedModel.LocationMaster" Role="LocationMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationMaster" Role="LocationMaster1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationMaster1">
+        <PropertyRef Name="LocationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationMaster" Role="LocationMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LocationMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeMaster_UserMaster">
+    <End Type="DIMContainerDB_RevisedModel.UserMaster" Role="UserMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeMaster" Role="LocationTypeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LocationTypeMaster">
+        <PropertyRef Name="CreatorUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LocationTypeRoleMappingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LocationTypeMaster" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeRoleMappingMaster_LocationTypeMaster" FromRole="LocationTypeRoleMappingMaster" ToRole="LocationTypeMaster" />
+    <NavigationProperty Name="RoleMaster" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeRoleMappingMaster_RoleMaster" FromRole="LocationTypeRoleMappingMaster" ToRole="RoleMaster" />
+  </EntityType>
+  <EntityType Name="ApplicationMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ApplicationName" />
+      <PropertyRef Name="AuthToken" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LocationTypeDeviceTypeMappingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="LocationTypeID" />
+      <PropertyRef Name="DeviceTypeID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DeviceTypeMaster" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" FromRole="LocationTypeDeviceTypeMappingMaster" ToRole="DeviceTypeMaster" />
+    <NavigationProperty Name="LocationTypeMaster" Relationship="DIMContainerDB_RevisedModel.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" FromRole="LocationTypeDeviceTypeMappingMaster" ToRole="LocationTypeMaster" />
+  </EntityType>
+  <Association Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+    <End Type="DIMContainerDB_RevisedModel.DeviceTypeMaster" Role="DeviceTypeMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeDeviceTypeMappingMaster" Role="LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+        <PropertyRef Name="DeviceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeMaster" Role="LocationTypeMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeDeviceTypeMappingMaster" Role="LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+        <PropertyRef Name="LocationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeMaster" Role="LocationTypeMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeRoleMappingMaster" Role="LocationTypeRoleMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationTypeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeRoleMappingMaster">
+        <PropertyRef Name="LocationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocationTypeRoleMappingMaster_RoleMaster">
+    <End Type="DIMContainerDB_RevisedModel.RoleMaster" Role="RoleMaster" Multiplicity="1" />
+    <End Type="DIMContainerDB_RevisedModel.LocationTypeRoleMappingMaster" Role="LocationTypeRoleMappingMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationTypeRoleMappingMaster">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

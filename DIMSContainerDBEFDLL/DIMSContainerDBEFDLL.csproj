@@ -39,16 +39,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,107 +61,190 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfig.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationProjectMappingMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationTypeDevieTypeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationTypeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="CameraDtlsTbl.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="CameraPositionMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyTypeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="ContainerTransaction.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="ContainerTypeMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="DamageTransaction.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="DamageTransactionDetail.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="DamageTypeMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="DBUtility.cs" />
-    <Compile Include="DIMSContainerDB_Revised.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DIMSContainerDB_Revised.Context.tt</DependentUpon>
+    <Compile Include="DesignationMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DIMSContainerDB_Revised.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+    <Compile Include="DeviceMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DIMSContainerDB_Revised.Designer.cs">
+    <Compile Include="DeviceTypeDetailsMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTypeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIMSContainerDBEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DIMSContainerDB_Revised.edmx</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIMSContainerDBEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DIMSContainerDBEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DIMSContainerDBEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityProxies\ApplicationMasterProxy.cs" />
+    <Compile Include="EntityProxies\CameraDtlsTblProxy.cs" />
+    <Compile Include="EntityProxies\CameraPositionMasterProxy.cs" />
+    <Compile Include="EntityProxies\ContainerTransactionProxy.cs" />
+    <Compile Include="EntityProxies\ContainerTypeMasterProxy.cs" />
+    <Compile Include="EntityProxies\DamageMasterProxy.cs" />
+    <Compile Include="EntityProxies\DamageTransactionDetailProxy.cs" />
+    <Compile Include="EntityProxies\DamageTransactionProxy.cs" />
+    <Compile Include="EntityProxies\DamageTypeMasterProxy.cs" />
+    <Compile Include="EntityProxies\DeviceMasterProxy.cs" />
+    <Compile Include="EntityProxies\DeviceTypeMasterProxy.cs" />
+    <Compile Include="EntityProxies\LocationMasterProxy.cs" />
+    <Compile Include="EntityProxies\LocationTypeDeviceTypeMappingMasterProxy.cs" />
+    <Compile Include="EntityProxies\LocationTypeMasterProxy.cs" />
+    <Compile Include="EntityProxies\LocationTypeRoleMappingMasterProxy.cs" />
+    <Compile Include="EntityProxies\RoleMasterProxy.cs" />
+    <Compile Include="EntityProxies\UserMasterProxy.cs" />
+    <Compile Include="LaneDeviceMappingMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="LaneMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="OwnerCodeMaster1.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+    <Compile Include="LocationMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationTypeDetailsMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationTypeDeviceTypeMappingMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationTypeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationTypeRoleMappingMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerCodeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTypeMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleDesignationMappingMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="RoleMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleScreenMapping.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="ScreenMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="ShippingLineMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_GetScreensFromRoleID_Result.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionApplicationTypeMappingMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionFieldMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionMaster.cs">
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="UserMaster.cs">
-      <DependentUpon>DIMSContainerDB_Revised.tt</DependentUpon>
+      <DependentUpon>DIMSContainerDBEF.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="DIMSContainerDB_Revised.edmx">
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DIMSContainerDBEF.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DIMSContainerDB_Revised.Designer.cs</LastGenOutput>
+      <LastGenOutput>DIMSContainerDBEF.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="DIMSContainerDB_Revised.edmx.diagram">
-      <DependentUpon>DIMSContainerDB_Revised.edmx</DependentUpon>
+    <None Include="DIMSContainerDBEF.edmx.diagram">
+      <DependentUpon>DIMSContainerDBEF.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DIMSContainerDB_Revised.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DIMSContainerDB_Revised.Context.cs</LastGenOutput>
-      <DependentUpon>DIMSContainerDB_Revised.edmx</DependentUpon>
-    </Content>
-    <Content Include="DIMSContainerDB_Revised.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DIMSContainerDB_Revised.edmx</DependentUpon>
-      <LastGenOutput>DIMSContainerDB_Revised.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="DIMSContainerDBEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DIMSContainerDBEF.edmx</DependentUpon>
+      <LastGenOutput>DIMSContainerDBEF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DIMSContainerDBEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DIMSContainerDBEF.edmx</DependentUpon>
+      <LastGenOutput>DIMSContainerDBEF.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

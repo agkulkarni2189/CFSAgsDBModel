@@ -17,8 +17,9 @@ namespace DIMSContainerDBEFDLL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RoleMaster()
         {
+            this.LocationTypeRoleMappingMasters = new HashSet<LocationTypeRoleMappingMaster>();
+            this.RoleDesignationMappingMasters = new HashSet<RoleDesignationMappingMaster>();
             this.RoleScreenMappings = new HashSet<RoleScreenMapping>();
-            this.UserMasters = new HashSet<UserMaster>();
         }
     
         public int ID { get; set; }
@@ -26,8 +27,10 @@ namespace DIMSContainerDBEFDLL
         public Nullable<bool> IsSuperUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoleScreenMapping> RoleScreenMappings { get; set; }
+        public virtual ICollection<LocationTypeRoleMappingMaster> LocationTypeRoleMappingMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters { get; set; }
+        public virtual ICollection<RoleDesignationMappingMaster> RoleDesignationMappingMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoleScreenMapping> RoleScreenMappings { get; set; }
     }
 }

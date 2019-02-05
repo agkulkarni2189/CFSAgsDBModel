@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DIMContainerDB_Revised_DevModelStoreContainer" CdmEntityContainer="DIMContainerDB_Revised_DevEntities">
+    <EntitySetMapping Name="ApplicationMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationMaster">
+        <MappingFragment StoreEntitySet="ApplicationMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="ApplicationDesc" ColumnName="ApplicationDesc" />
+          <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationProjectMappingMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationProjectMappingMaster">
+        <MappingFragment StoreEntitySet="ApplicationProjectMappingMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationTypeDevieTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationTypeDevieTypeMaster">
+        <MappingFragment StoreEntitySet="ApplicationTypeDevieTypeMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+          <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationTypeMaster">
+        <MappingFragment StoreEntitySet="ApplicationTypeMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ApplicationTypeName" ColumnName="ApplicationTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CameraDtlsTbls">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CameraDtlsTbl">
+        <MappingFragment StoreEntitySet="CameraDtlsTbl">
+          <ScalarProperty Name="CameraID" ColumnName="CameraID" />
+          <ScalarProperty Name="CameraIP" ColumnName="CameraIP" />
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CameraPositionMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CameraPositionMaster">
+        <MappingFragment StoreEntitySet="CameraPositionMaster">
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+          <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+          <ScalarProperty Name="ContainerVisible" ColumnName="ContainerVisible" />
+          <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CompanyMaster">
+        <MappingFragment StoreEntitySet="CompanyMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LegalTitle" ColumnName="LegalTitle" />
+          <ScalarProperty Name="CompanyTypeID" ColumnName="CompanyTypeID" />
+          <ScalarProperty Name="HeadOfficeAddress" ColumnName="HeadOfficeAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CompanyTypeMaster">
+        <MappingFragment StoreEntitySet="CompanyTypeMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContainerTransactions">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ContainerTransaction">
+        <MappingFragment StoreEntitySet="ContainerTransactions">
+          <ScalarProperty Name="TransID" ColumnName="TransID" />
+          <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+          <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+          <ScalarProperty Name="ContainerDmgd" ColumnName="ContainerDmgd" />
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="ContainerCode" ColumnName="ContainerCode" />
+          <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+          <ScalarProperty Name="VehicleNo" ColumnName="VehicleNo" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="BATNo" ColumnName="BATNo" />
+          <ScalarProperty Name="Displayed" ColumnName="Displayed" />
+          <ScalarProperty Name="DIRLocation" ColumnName="DIRLocation" />
+          <ScalarProperty Name="TrailerTransID" ColumnName="TrailerTransID" />
+          <ScalarProperty Name="SequnceOfContan" ColumnName="SequnceOfContan" />
+          <ScalarProperty Name="EmailImg" ColumnName="EmailImg" />
+          <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
+          <ScalarProperty Name="IsRotateImages" ColumnName="IsRotateImages" />
+          <ScalarProperty Name="CancelStatus" ColumnName="CancelStatus" />
+          <ScalarProperty Name="IsManualTransaction" ColumnName="IsManualTransaction" />
+          <ScalarProperty Name="IsReportCreated" ColumnName="IsReportCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContainerTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ContainerTypeMaster">
+        <MappingFragment StoreEntitySet="ContainerTypeMaster">
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTransactions">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DamageTransaction">
+        <MappingFragment StoreEntitySet="DamageTransaction">
+          <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+          <ScalarProperty Name="RemarkCam1" ColumnName="RemarkCam1" />
+          <ScalarProperty Name="RemarkCam2" ColumnName="RemarkCam2" />
+          <ScalarProperty Name="RemarkCam3" ColumnName="RemarkCam3" />
+          <ScalarProperty Name="RemarkCam4" ColumnName="RemarkCam4" />
+          <ScalarProperty Name="RemarkCam5" ColumnName="RemarkCam5" />
+          <ScalarProperty Name="RemarkCam6" ColumnName="RemarkCam6" />
+          <ScalarProperty Name="RemarkCam7" ColumnName="RemarkCam7" />
+          <ScalarProperty Name="CommonRemark" ColumnName="CommonRemark" />
+          <ScalarProperty Name="DmgdTypeCam1" ColumnName="DmgdTypeCam1" />
+          <ScalarProperty Name="DmgdTypeCam2" ColumnName="DmgdTypeCam2" />
+          <ScalarProperty Name="DmgdTypeCam3" ColumnName="DmgdTypeCam3" />
+          <ScalarProperty Name="DmgdTypeCam4" ColumnName="DmgdTypeCam4" />
+          <ScalarProperty Name="DmgdTypeCam5" ColumnName="DmgdTypeCam5" />
+          <ScalarProperty Name="DmgdTypeCam6" ColumnName="DmgdTypeCam6" />
+          <ScalarProperty Name="DmgdTypeCam7" ColumnName="DmgdTypeCam7" />
+          <ScalarProperty Name="CommonDmgTypes" ColumnName="CommonDmgTypes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTransactionDetails">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DamageTransactionDetail">
+        <MappingFragment StoreEntitySet="DamageTransactionDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+          <ScalarProperty Name="DamageRemark" ColumnName="DamageRemark" />
+          <ScalarProperty Name="DamageTypes" ColumnName="DamageTypes" />
+          <ScalarProperty Name="CamPosID" ColumnName="CamPosID" />
+          <ScalarProperty Name="IsCommonRemark" ColumnName="IsCommonRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DamageTypeMaster">
+        <MappingFragment StoreEntitySet="DamageTypeMaster">
+          <ScalarProperty Name="DmgTypeid" ColumnName="DmgTypeid" />
+          <ScalarProperty Name="DmgTypeName" ColumnName="DmgTypeName" />
+          <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesignationMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DesignationMaster">
+        <MappingFragment StoreEntitySet="DesignationMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DeviceMaster">
+        <MappingFragment StoreEntitySet="DeviceMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+          <ScalarProperty Name="DeviceIP" ColumnName="DeviceIP" />
+          <ScalarProperty Name="DeviceMACAddress" ColumnName="DeviceMACAddress" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceTypeDetailsMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DeviceTypeDetailsMaster">
+        <MappingFragment StoreEntitySet="DeviceTypeDetailsMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+          <ScalarProperty Name="PropertyKey" ColumnName="PropertyKey" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DeviceTypeMaster">
+        <MappingFragment StoreEntitySet="DeviceTypeMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DeviceTypeName" ColumnName="DeviceTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LaneMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LaneMaster">
+        <MappingFragment StoreEntitySet="LaneMaster">
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="TypeOfGate" ColumnName="TypeOfGate" />
+          <ScalarProperty Name="LaneName" ColumnName="LaneName" />
+          <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+          <ScalarProperty Name="TransactionsEnabled" ColumnName="TransactionsEnabled" />
+          <ScalarProperty Name="IsBusy" ColumnName="IsBusy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationMaster">
+        <MappingFragment StoreEntitySet="LocationMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypeDetailsMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeDetailsMaster">
+        <MappingFragment StoreEntitySet="LocationTypeDetailsMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="PropertyKey" ColumnName="PropertyKey" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeMaster">
+        <MappingFragment StoreEntitySet="LocationTypeMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
+          <ScalarProperty Name="IsGate" ColumnName="IsGate" />
+          <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+          <ScalarProperty Name="IsTransactionEnabled" ColumnName="IsTransactionEnabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypeRoleMappingMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeRoleMappingMaster">
+        <MappingFragment StoreEntitySet="LocationTypeRoleMappingMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ProjectMaster">
+        <MappingFragment StoreEntitySet="ProjectMaster">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="DeployerFirm" ColumnName="DeployerFirm" />
+          <ScalarProperty Name="DeployeeFirm" ColumnName="DeployeeFirm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleDesignationMappingMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.RoleDesignationMappingMaster">
+        <MappingFragment StoreEntitySet="RoleDesignationMappingMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.RoleMaster">
+        <MappingFragment StoreEntitySet="RoleMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleScreenMappings">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.RoleScreenMapping">
+        <MappingFragment StoreEntitySet="RoleScreenMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScreenMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ScreenMaster">
+        <MappingFragment StoreEntitySet="ScreenMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="ScreenUrl" ColumnName="ScreenUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingLineMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ShippingLineMaster">
+        <MappingFragment StoreEntitySet="ShippingLineMaster">
+          <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+          <ScalarProperty Name="ShippingLineName" ColumnName="ShippingLineName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="faxno" ColumnName="faxno" />
+          <ScalarProperty Name="emailid1" ColumnName="emailid1" />
+          <ScalarProperty Name="emailid2" ColumnName="emailid2" />
+          <ScalarProperty Name="emailid3" ColumnName="emailid3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionApplicationTypeMappingMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.TransactionApplicationTypeMappingMaster">
+        <MappingFragment StoreEntitySet="TransactionApplicationTypeMappingMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionFieldMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.TransactionFieldMaster">
+        <MappingFragment StoreEntitySet="TransactionFieldMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionFieldName" ColumnName="TransactionFieldName" />
+          <ScalarProperty Name="TransactionFieldType" ColumnName="TransactionFieldType" />
+          <ScalarProperty Name="IsForeignKey" ColumnName="IsForeignKey" />
+          <ScalarProperty Name="ForeignKeyTableName" ColumnName="ForeignKeyTableName" />
+          <ScalarProperty Name="ForeignKeyColumnName" ColumnName="ForeignKeyColumnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.TransactionMaster">
+        <MappingFragment StoreEntitySet="TransactionMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.UserMaster">
+        <MappingFragment StoreEntitySet="UserMaster">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLoggedin" ColumnName="IsLoggedin" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationConfigs">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationConfig">
+        <MappingFragment StoreEntitySet="ApplicationConfig">
+          <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LaneDeviceMappingMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LaneDeviceMappingMaster">
+        <MappingFragment StoreEntitySet="LaneDeviceMappingMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypeDeviceTypeMappingMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeDeviceTypeMappingMaster">
+        <MappingFragment StoreEntitySet="LocationTypeDeviceTypeMappingMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnerCodeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.OwnerCodeMaster">
+        <MappingFragment StoreEntitySet="OwnerCodeMaster">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+          <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CameraPositionID" FunctionName="DIMContainerDB_Revised_DevModel.Store.CameraPositionID" />
+    <FunctionImportMapping FunctionImportName="fetch_image_details" FunctionName="DIMContainerDB_Revised_DevModel.Store.fetch_image_details" />
+    <FunctionImportMapping FunctionImportName="savecamerapositionngdata" FunctionName="DIMContainerDB_Revised_DevModel.Store.savecamerapositionngdata" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_GetMissingTransactions" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_GetMissingTransactions" />
+    <FunctionImportMapping FunctionImportName="sp_GetScreensFromRoleID" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_GetScreensFromRoleID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sp_GetScreensFromRoleID_Result">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="ScreenUrl" ColumnName="ScreenUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MapScreensToRoles" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_MapScreensToRoles" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_StoreDamageDetails" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_StoreDamageDetails" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_UserLogout" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_UserLogout" />
+    <FunctionImportMapping FunctionImportName="spsavecameradata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spsavecameradata" />
+    <FunctionImportMapping FunctionImportName="spsavelanedata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spsavelanedata" />
+    <FunctionImportMapping FunctionImportName="spsaveshippinglinedata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spsaveshippinglinedata" />
+    <FunctionImportMapping FunctionImportName="spupdatecamerapositioningdata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spupdatecamerapositioningdata" />
+    <FunctionImportMapping FunctionImportName="updatecamera" FunctionName="DIMContainerDB_Revised_DevModel.Store.updatecamera" />
+    <FunctionImportMapping FunctionImportName="UpdateEmptytransaction" FunctionName="DIMContainerDB_Revised_DevModel.Store.UpdateEmptytransaction" />
+    <FunctionImportMapping FunctionImportName="updatelanedata" FunctionName="DIMContainerDB_Revised_DevModel.Store.updatelanedata" />
+    <FunctionImportMapping FunctionImportName="updateshippingline" FunctionName="DIMContainerDB_Revised_DevModel.Store.updateshippingline" />
+    <EntitySetMapping Name="ProjectTypeMasters">
+      <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ProjectTypeMaster">
+        <MappingFragment StoreEntitySet="ProjectTypeMaster">
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

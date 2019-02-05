@@ -16,5 +16,6 @@ namespace DIMSContainerDBEFDLL
     {
         public int DmgTypeid { get; set; }
         public string DmgTypeName { get; set; }
+        public Nullable<int> CreatorUserID { get; set; }
     }
 }

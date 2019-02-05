@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3e8adf346e4e4315af9f42c9a1ef9a69" Name="Diagram1">
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ApplicationMaster" Width="1.5" PointX="10.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ApplicationProjectMappingMaster" Width="1.5" PointX="12.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ApplicationTypeDevieTypeMaster" Width="1.5" PointX="13.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ApplicationTypeMaster" Width="1.5" PointX="8" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.CameraDtlsTbl" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.CameraPositionMaster" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.CompanyMaster" Width="1.5" PointX="8" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.CompanyTypeMaster" Width="1.5" PointX="5.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ContainerTransaction" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ContainerTypeMaster" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DamageTransaction" Width="1.5" PointX="3.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DamageTransactionDetail" Width="1.5" PointX="6" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DamageTypeMaster" Width="1.5" PointX="2.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DesignationMaster" Width="1.5" PointX="11.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DeviceMaster" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DeviceTypeDetailsMaster" Width="1.5" PointX="3.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.DeviceTypeMaster" Width="1.5" PointX="1.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LaneMaster" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LocationMaster" Width="1.5" PointX="11" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LocationTypeDetailsMaster" Width="1.5" PointX="11" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LocationTypeMaster" Width="1.5" PointX="8.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LocationTypeRoleMappingMaster" Width="1.5" PointX="14" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ProjectMaster" Width="1.5" PointX="10.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.RoleDesignationMappingMaster" Width="1.5" PointX="14" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.RoleMaster" Width="1.5" PointX="11.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.RoleScreenMapping" Width="1.5" PointX="14" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ScreenMaster" Width="1.5" PointX="11.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ShippingLineMaster" Width="1.5" PointX="3.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.sysdiagram" Width="1.5" PointX="4.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.TransactionApplicationTypeMappingMaster" Width="1.5" PointX="17" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.TransactionFieldMaster" Width="1.5" PointX="17" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.TransactionMaster" Width="1.5" PointX="14.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.UserMaster" Width="1.5" PointX="3.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ApplicationConfig" Width="1.5" PointX="6.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LaneDeviceMappingMaster" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.LocationTypeDeviceTypeMappingMaster" Width="1.5" PointX="11" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.OwnerCodeMaster" Width="1.5" PointX="8.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ApplicationMaster_ApplicationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ApplicationProjectMappingMaster_ApplicationMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ApplicationProjectMappingMaster_ProjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_CameraDtlsTbl_CameraPositionMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_CameraIPDetails_GateDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_DamageTransactionDetails_CameraPositionMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_CompanyMaster_CompanyTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ProjectMaster_DeployeeFirm" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ProjectMaster_DeployerFirm" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ContainerTransactions_ContainerTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ContainerTransactions_DamageTransaction" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ContainerTransactions_LaneMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ContainerTransactions_ShippingLineMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ContainerTransactions_UserMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_DamageTransactionDetails_DamageTransaction" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_RoleDesignationMappingMaster_DesignationMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_DeviceMaster_DeviceTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LaneDeviceMappingMaster_DeviceMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_DeviceTypeDetailsMaster_DeviceTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LaneDeviceMappingMaster_LaneMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LocationMaster_LocationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LocationTypeDetailsMaster_LocationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LocationTypeRoleMappingMaster_LocationTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_LocationTypeRoleMappingMaster_RoleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_RoleDesignationMappingMaster_RoleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_RoleScreenMapping_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_RoleScreenMapping_ScreenMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_TransactionApplicationTypeMappingMaster_TransactionMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_TransactionFieldMaster_TransactionMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DIMContainerDB_Revised_DevModel.ProjectTypeMaster" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_ProjectMaster_ProjectTypeMaster" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_UserMaster_DesignationMaster" />
+        <AssociationConnector Association="DIMContainerDB_Revised_DevModel.FK_UserMaster_ReportsToDesignation" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

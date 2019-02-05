@@ -17,8 +17,8 @@ namespace DIMSContainerDBEFDLL
         public long ID { get; set; }
         public int DmgDtlsID { get; set; }
         public string DamageRemark { get; set; }
-        public Nullable<int> CamPosID { get; set; }
         public string DamageTypes { get; set; }
+        public Nullable<int> CamPosID { get; set; }
         public bool IsCommonRemark { get; set; }
     
         public virtual CameraPositionMaster CameraPositionMaster { get; set; }

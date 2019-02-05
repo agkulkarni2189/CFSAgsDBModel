@@ -1,0 +1,2863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DIMContainerDB_Revised_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.ApplicationConfig' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ApplicationConfig">
+          <Key>
+            <PropertyRef Name="ShiftStartTime" />
+          </Key>
+          <Property Name="ShiftStartTime" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApplicationDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ApplicationTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationProjectMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ApplicationID" Type="int" Nullable="false" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationTypeDevieTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ApplicationTypeID" Type="int" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ApplicationTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CameraDtlsTbl">
+          <Key>
+            <PropertyRef Name="CameraID" />
+          </Key>
+          <Property Name="CameraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CameraIP" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="LaneID" Type="int" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CameraPositionMaster">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PositionDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContainerVisible" Type="int" Nullable="false" />
+          <Property Name="ImageIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="CompanyMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LegalTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyTypeID" Type="int" Nullable="false" />
+          <Property Name="HeadOfficeAddress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CompanyTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CompanyType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContainerTransactions">
+          <Key>
+            <PropertyRef Name="TransID" />
+          </Key>
+          <Property Name="TransID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShippingLineID" Type="int" />
+          <Property Name="TransactionTime" Type="datetime" />
+          <Property Name="LaneID" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="DmgDtlsID" Type="int" />
+          <Property Name="ContainerDmgd" Type="bit" />
+          <Property Name="ContainerTypeID" Type="int" />
+          <Property Name="ContainerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsoCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="VehicleNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BATNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Displayed" Type="bit" Nullable="false" />
+          <Property Name="DIRLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="TrailerTransID" Type="int" Nullable="false" />
+          <Property Name="SequnceOfContan" Type="int" />
+          <Property Name="EmailImg" Type="image" />
+          <Property Name="ContainerType" Type="varchar" MaxLength="50" />
+          <Property Name="IsRotateImages" Type="bit" />
+          <Property Name="CancelStatus" Type="bit" />
+          <Property Name="IsManualTransaction" Type="bit" />
+          <Property Name="IsReportCreated" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContainerTypeMaster">
+          <Key>
+            <PropertyRef Name="ContainerTypeID" />
+          </Key>
+          <Property Name="ContainerTypeID" Type="int" Nullable="false" />
+          <Property Name="ContainerTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DamageTransaction">
+          <Key>
+            <PropertyRef Name="DmgDtlsID" />
+          </Key>
+          <Property Name="DmgDtlsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemarkCam1" Type="nvarchar" MaxLength="100" />
+          <Property Name="RemarkCam2" Type="nvarchar" MaxLength="100" />
+          <Property Name="RemarkCam3" Type="nvarchar" MaxLength="100" />
+          <Property Name="RemarkCam4" Type="nvarchar" MaxLength="100" />
+          <Property Name="RemarkCam5" Type="nvarchar" MaxLength="100" />
+          <Property Name="RemarkCam6" Type="nvarchar" MaxLength="100" />
+          <Property Name="RemarkCam7" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommonRemark" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam1" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam2" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam3" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam4" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam5" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam6" Type="nvarchar" MaxLength="100" />
+          <Property Name="DmgdTypeCam7" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommonDmgTypes" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DamageTransactionDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DmgDtlsID" Type="int" Nullable="false" />
+          <Property Name="DamageRemark" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DamageTypes" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CamPosID" Type="int" />
+          <Property Name="IsCommonRemark" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DamageTypeMaster">
+          <Key>
+            <PropertyRef Name="DmgTypeid" />
+          </Key>
+          <Property Name="DmgTypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DmgTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatorUserID" Type="int" />
+        </EntityType>
+        <EntityType Name="DesignationMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DesignationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DeviceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+          <Property Name="DeviceIP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeviceMACAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceTypeDetailsMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+          <Property Name="PropertyKey" Type="int" Nullable="false" />
+          <Property Name="PropertyValue" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DeviceTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.LaneDeviceMappingMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LaneDeviceMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LaneID" />
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LaneID" Type="int" Nullable="false" />
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaneMaster">
+          <Key>
+            <PropertyRef Name="LaneID" />
+          </Key>
+          <Property Name="LaneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfGate" Type="int" Nullable="false" />
+          <Property Name="LaneName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatorUserID" Type="int" />
+          <Property Name="TransactionsEnabled" Type="bit" Nullable="false" />
+          <Property Name="IsBusy" Type="bit" />
+        </EntityType>
+        <EntityType Name="LocationMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocationTypeID" Type="int" Nullable="false" />
+          <Property Name="LocationDesc" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LocationTypeDetailsMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocationTypeID" Type="int" Nullable="false" />
+          <Property Name="PropertyKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyValue" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.LocationTypeDeviceTypeMappingMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LocationTypeDeviceTypeMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LocationTypeID" />
+            <PropertyRef Name="DeviceTypeID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocationTypeID" Type="int" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocationTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocationTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsGate" Type="bit" Nullable="false" />
+          <Property Name="CreatorUserID" Type="int" Nullable="false" />
+          <Property Name="IsTransactionEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocationTypeRoleMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocationTypeID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DIMContainerDB_Revised_Dev.dbo.OwnerCodeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OwnerCodeMaster">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+            <PropertyRef Name="OwnerCode" />
+          </Key>
+          <Property Name="OwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatorUserID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DeployerFirm" Type="int" Nullable="false" />
+          <Property Name="DeployeeFirm" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProjectType" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleDesignationMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DesignationID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsSuperUser" Type="bit" />
+        </EntityType>
+        <EntityType Name="RoleScreenMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="ScreenID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScreenMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScreenName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ScreenUrl" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShippingLineMaster">
+          <Key>
+            <PropertyRef Name="ShippingLineID" />
+          </Key>
+          <Property Name="ShippingLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShippingLineName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar(max)" />
+          <Property Name="ContactNo" Type="nvarchar(max)" />
+          <Property Name="faxno" Type="nvarchar" MaxLength="50" />
+          <Property Name="emailid1" Type="nvarchar" MaxLength="50" />
+          <Property Name="emailid2" Type="nvarchar" MaxLength="50" />
+          <Property Name="emailid3" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TransactionApplicationTypeMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TransactionID" Type="int" Nullable="false" />
+          <Property Name="ApplicationTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionFieldMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TransactionID" Type="int" Nullable="false" />
+          <Property Name="TransactionFieldName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TransactionFieldType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsForeignKey" Type="bit" Nullable="false" />
+          <Property Name="ForeignKeyTableName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ForeignKeyColumnName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TransactionMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TransactionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsLoggedin" Type="bit" Nullable="false" />
+          <Property Name="DeviceID" Type="int" />
+          <Property Name="DesignationID" Type="int" />
+          <Property Name="ReportsTo" Type="int" />
+        </EntityType>
+        <Association Name="FK_ApplicationMaster_ApplicationTypeMaster">
+          <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+          <End Role="ApplicationMaster" Type="Self.ApplicationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationMaster">
+              <PropertyRef Name="ApplicationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationProjectMappingMaster_ApplicationMaster">
+          <End Role="ApplicationMaster" Type="Self.ApplicationMaster" Multiplicity="1" />
+          <End Role="ApplicationProjectMappingMaster" Type="Self.ApplicationProjectMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationProjectMappingMaster">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationProjectMappingMaster_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="ApplicationProjectMappingMaster" Type="Self.ApplicationProjectMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationProjectMappingMaster">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster">
+          <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+          <End Role="ApplicationTypeDevieTypeMaster" Type="Self.ApplicationTypeDevieTypeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationTypeDevieTypeMaster">
+              <PropertyRef Name="ApplicationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="ApplicationTypeDevieTypeMaster" Type="Self.ApplicationTypeDevieTypeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationTypeDevieTypeMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CameraDtlsTbl_CameraPositionMaster">
+          <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="1" />
+          <End Role="CameraDtlsTbl" Type="Self.CameraDtlsTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CameraPositionMaster">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="CameraDtlsTbl">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CameraIPDetails_GateDetails">
+          <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="1" />
+          <End Role="CameraDtlsTbl" Type="Self.CameraDtlsTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaneMaster">
+              <PropertyRef Name="LaneID" />
+            </Principal>
+            <Dependent Role="CameraDtlsTbl">
+              <PropertyRef Name="LaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyMaster_CompanyTypeMaster">
+          <End Role="CompanyTypeMaster" Type="Self.CompanyTypeMaster" Multiplicity="1" />
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompanyMaster">
+              <PropertyRef Name="CompanyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_ContainerTypeMaster">
+          <End Role="ContainerTypeMaster" Type="Self.ContainerTypeMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContainerTypeMaster">
+              <PropertyRef Name="ContainerTypeID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="ContainerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_DamageTransaction">
+          <End Role="DamageTransaction" Type="Self.DamageTransaction" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DamageTransaction">
+              <PropertyRef Name="DmgDtlsID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="DmgDtlsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_LaneMaster">
+          <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaneMaster">
+              <PropertyRef Name="LaneID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="LaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_ShippingLineMaster">
+          <End Role="ShippingLineMaster" Type="Self.ShippingLineMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShippingLineMaster">
+              <PropertyRef Name="ShippingLineID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="ShippingLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageTransactionDetails_CameraPositionMaster">
+          <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="0..1" />
+          <End Role="DamageTransactionDetails" Type="Self.DamageTransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CameraPositionMaster">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="DamageTransactionDetails">
+              <PropertyRef Name="CamPosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageTransactionDetails_DamageTransaction">
+          <End Role="DamageTransaction" Type="Self.DamageTransaction" Multiplicity="1" />
+          <End Role="DamageTransactionDetails" Type="Self.DamageTransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DamageTransaction">
+              <PropertyRef Name="DmgDtlsID" />
+            </Principal>
+            <Dependent Role="DamageTransactionDetails">
+              <PropertyRef Name="DmgDtlsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeviceMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceTypeDetailsMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="DeviceTypeDetailsMaster" Type="Self.DeviceTypeDetailsMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeviceTypeDetailsMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaneDeviceMappingMaster_DeviceMaster">
+          <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="1" />
+          <End Role="LaneDeviceMappingMaster" Type="Self.LaneDeviceMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LaneDeviceMappingMaster">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaneDeviceMappingMaster_LaneMaster">
+          <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="1" />
+          <End Role="LaneDeviceMappingMaster" Type="Self.LaneDeviceMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaneMaster">
+              <PropertyRef Name="LaneID" />
+            </Principal>
+            <Dependent Role="LaneDeviceMappingMaster">
+              <PropertyRef Name="LaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationMaster" Type="Self.LocationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeDetailsMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeDetailsMaster" Type="Self.LocationTypeDetailsMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeDetailsMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeDeviceTypeMappingMaster" Type="Self.LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeDeviceTypeMappingMaster" Type="Self.LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeRoleMappingMaster" Type="Self.LocationTypeRoleMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeRoleMappingMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeRoleMappingMaster_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="LocationTypeRoleMappingMaster" Type="Self.LocationTypeRoleMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeRoleMappingMaster">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_DeployeeFirm">
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="1" />
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="DeployeeFirm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_DeployerFirm">
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="1" />
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="DeployerFirm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_ProjectTypeMaster">
+          <End Role="ProjectTypeMaster" Type="Self.ProjectTypeMaster" Multiplicity="1" />
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDesignationMappingMaster_DesignationMaster">
+          <End Role="DesignationMaster" Type="Self.DesignationMaster" Multiplicity="1" />
+          <End Role="RoleDesignationMappingMaster" Type="Self.RoleDesignationMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleDesignationMappingMaster">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDesignationMappingMaster_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="RoleDesignationMappingMaster" Type="Self.RoleDesignationMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleDesignationMappingMaster">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleScreenMapping_RoleID">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RoleScreenMapping" Type="Self.RoleScreenMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleScreenMapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleScreenMapping_ScreenMaster">
+          <End Role="ScreenMaster" Type="Self.ScreenMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RoleScreenMapping" Type="Self.RoleScreenMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScreenMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleScreenMapping">
+              <PropertyRef Name="ScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster">
+          <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+          <End Role="TransactionApplicationTypeMappingMaster" Type="Self.TransactionApplicationTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionApplicationTypeMappingMaster">
+              <PropertyRef Name="ApplicationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionApplicationTypeMappingMaster_TransactionMaster">
+          <End Role="TransactionMaster" Type="Self.TransactionMaster" Multiplicity="1" />
+          <End Role="TransactionApplicationTypeMappingMaster" Type="Self.TransactionApplicationTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionApplicationTypeMappingMaster">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionFieldMaster_TransactionMaster">
+          <End Role="TransactionMaster" Type="Self.TransactionMaster" Multiplicity="1" />
+          <End Role="TransactionFieldMaster" Type="Self.TransactionFieldMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionFieldMaster">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaster_DesignationMaster">
+          <End Role="DesignationMaster" Type="Self.DesignationMaster" Multiplicity="0..1" />
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaster_ReportsToDesignation">
+          <End Role="DesignationMaster" Type="Self.DesignationMaster" Multiplicity="0..1" />
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="ReportsTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CameraPositionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fetch_image_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TransactionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="savecamerapositionngdata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="positiondescription" Type="varchar" Mode="In" />
+          <Parameter Name="userdescriptionposition" Type="varchar" Mode="In" />
+          <Parameter Name="containervisible" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetMissingTransactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartTime" Type="datetime" Mode="In" />
+          <Parameter Name="EndTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_GetScreensFromRoleID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_MapScreensToRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_StoreDamageDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_UserLogout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spsavecameradata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cameraip" Type="varchar" Mode="In" />
+          <Parameter Name="laneid" Type="varchar" Mode="In" />
+          <Parameter Name="positiondesc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spsavelanedata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ingate" Type="varchar" Mode="In" />
+          <Parameter Name="lanename" Type="varchar" Mode="In" />
+          <Parameter Name="busy" Type="varchar" Mode="In" />
+          <Parameter Name="ipaddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spsaveshippinglinedata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="shippinglinename" Type="varchar" Mode="In" />
+          <Parameter Name="companyaddr" Type="varchar" Mode="In" />
+          <Parameter Name="phoneno" Type="varchar" Mode="In" />
+          <Parameter Name="faxno" Type="varchar" Mode="In" />
+          <Parameter Name="emailid1" Type="varchar" Mode="In" />
+          <Parameter Name="emailid2" Type="varchar" Mode="In" />
+          <Parameter Name="emailid3" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spupdatecamerapositioningdata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="primarykey" Type="varchar" Mode="In" />
+          <Parameter Name="positiondescription" Type="varchar" Mode="In" />
+          <Parameter Name="userdescriptionposition" Type="varchar" Mode="In" />
+          <Parameter Name="containervisible" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updatecamera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ipofcamera" Type="varchar" Mode="In" />
+          <Parameter Name="cameraid" Type="int" Mode="In" />
+          <Parameter Name="laneid" Type="varchar" Mode="In" />
+          <Parameter Name="positiondesc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateEmptytransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TransiD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updatelanedata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="ingate" Type="varchar" Mode="In" />
+          <Parameter Name="lanenameold" Type="varchar" Mode="In" />
+          <Parameter Name="lanenamenew" Type="varchar" Mode="In" />
+          <Parameter Name="busy" Type="int" Mode="In" />
+          <Parameter Name="ipaddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="updateshippingline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="shippinglinenamenew" Type="varchar" Mode="In" />
+          <Parameter Name="shippinglinenameold" Type="varchar" Mode="In" />
+          <Parameter Name="companyaddress" Type="varchar" Mode="In" />
+          <Parameter Name="companyphoneno" Type="varchar" Mode="In" />
+          <Parameter Name="faxno" Type="varchar" Mode="In" />
+          <Parameter Name="emailid1" Type="varchar" Mode="In" />
+          <Parameter Name="emailid2" Type="varchar" Mode="In" />
+          <Parameter Name="emailid3" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DIMContainerDB_Revised_DevModelStoreContainer">
+          <EntitySet Name="ApplicationMaster" EntityType="Self.ApplicationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationProjectMappingMaster" EntityType="Self.ApplicationProjectMappingMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationTypeDevieTypeMaster" EntityType="Self.ApplicationTypeDevieTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationTypeMaster" EntityType="Self.ApplicationTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CameraDtlsTbl" EntityType="Self.CameraDtlsTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CameraPositionMaster" EntityType="Self.CameraPositionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyMaster" EntityType="Self.CompanyMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyTypeMaster" EntityType="Self.CompanyTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContainerTransactions" EntityType="Self.ContainerTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContainerTypeMaster" EntityType="Self.ContainerTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamageTransaction" EntityType="Self.DamageTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamageTransactionDetails" EntityType="Self.DamageTransactionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamageTypeMaster" EntityType="Self.DamageTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DesignationMaster" EntityType="Self.DesignationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceMaster" EntityType="Self.DeviceMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceTypeDetailsMaster" EntityType="Self.DeviceTypeDetailsMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceTypeMaster" EntityType="Self.DeviceTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaneMaster" EntityType="Self.LaneMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationMaster" EntityType="Self.LocationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationTypeDetailsMaster" EntityType="Self.LocationTypeDetailsMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationTypeMaster" EntityType="Self.LocationTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationTypeRoleMappingMaster" EntityType="Self.LocationTypeRoleMappingMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectMaster" EntityType="Self.ProjectMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectTypeMaster" EntityType="Self.ProjectTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDesignationMappingMaster" EntityType="Self.RoleDesignationMappingMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleScreenMapping" EntityType="Self.RoleScreenMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScreenMaster" EntityType="Self.ScreenMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingLineMaster" EntityType="Self.ShippingLineMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionApplicationTypeMappingMaster" EntityType="Self.TransactionApplicationTypeMappingMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionFieldMaster" EntityType="Self.TransactionFieldMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionMaster" EntityType="Self.TransactionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationConfig" EntityType="Self.ApplicationConfig" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ApplicationConfig].[ShiftStartTime] AS [ShiftStartTime]
+    FROM [dbo].[ApplicationConfig] AS [ApplicationConfig]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LaneDeviceMappingMaster" EntityType="Self.LaneDeviceMappingMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LaneDeviceMappingMaster].[ID] AS [ID], 
+    [LaneDeviceMappingMaster].[LaneID] AS [LaneID], 
+    [LaneDeviceMappingMaster].[DeviceID] AS [DeviceID]
+    FROM [dbo].[LaneDeviceMappingMaster] AS [LaneDeviceMappingMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LocationTypeDeviceTypeMappingMaster" EntityType="Self.LocationTypeDeviceTypeMappingMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LocationTypeDeviceTypeMappingMaster].[ID] AS [ID], 
+    [LocationTypeDeviceTypeMappingMaster].[LocationTypeID] AS [LocationTypeID], 
+    [LocationTypeDeviceTypeMappingMaster].[DeviceTypeID] AS [DeviceTypeID]
+    FROM [dbo].[LocationTypeDeviceTypeMappingMaster] AS [LocationTypeDeviceTypeMappingMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OwnerCodeMaster" EntityType="Self.OwnerCodeMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OwnerCodeMaster].[OwnerID] AS [OwnerID], 
+    [OwnerCodeMaster].[OwnerCode] AS [OwnerCode], 
+    [OwnerCodeMaster].[CreatorUserID] AS [CreatorUserID]
+    FROM [dbo].[OwnerCodeMaster] AS [OwnerCodeMaster]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ApplicationMaster_ApplicationTypeMaster" Association="Self.FK_ApplicationMaster_ApplicationTypeMaster">
+            <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMaster" />
+            <End Role="ApplicationMaster" EntitySet="ApplicationMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationProjectMappingMaster_ApplicationMaster" Association="Self.FK_ApplicationProjectMappingMaster_ApplicationMaster">
+            <End Role="ApplicationMaster" EntitySet="ApplicationMaster" />
+            <End Role="ApplicationProjectMappingMaster" EntitySet="ApplicationProjectMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationProjectMappingMaster_ProjectMaster" Association="Self.FK_ApplicationProjectMappingMaster_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="ApplicationProjectMappingMaster" EntitySet="ApplicationProjectMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster" Association="Self.FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster">
+            <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMaster" />
+            <End Role="ApplicationTypeDevieTypeMaster" EntitySet="ApplicationTypeDevieTypeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster" Association="Self.FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+            <End Role="ApplicationTypeDevieTypeMaster" EntitySet="ApplicationTypeDevieTypeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CameraDtlsTbl_CameraPositionMaster" Association="Self.FK_CameraDtlsTbl_CameraPositionMaster">
+            <End Role="CameraPositionMaster" EntitySet="CameraPositionMaster" />
+            <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CameraIPDetails_GateDetails" Association="Self.FK_CameraIPDetails_GateDetails">
+            <End Role="LaneMaster" EntitySet="LaneMaster" />
+            <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyMaster_CompanyTypeMaster" Association="Self.FK_CompanyMaster_CompanyTypeMaster">
+            <End Role="CompanyTypeMaster" EntitySet="CompanyTypeMaster" />
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_ContainerTypeMaster" Association="Self.FK_ContainerTransactions_ContainerTypeMaster">
+            <End Role="ContainerTypeMaster" EntitySet="ContainerTypeMaster" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_DamageTransaction" Association="Self.FK_ContainerTransactions_DamageTransaction">
+            <End Role="DamageTransaction" EntitySet="DamageTransaction" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_LaneMaster" Association="Self.FK_ContainerTransactions_LaneMaster">
+            <End Role="LaneMaster" EntitySet="LaneMaster" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_ShippingLineMaster" Association="Self.FK_ContainerTransactions_ShippingLineMaster">
+            <End Role="ShippingLineMaster" EntitySet="ShippingLineMaster" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_UserMaster" Association="Self.FK_ContainerTransactions_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageTransactionDetails_CameraPositionMaster" Association="Self.FK_DamageTransactionDetails_CameraPositionMaster">
+            <End Role="CameraPositionMaster" EntitySet="CameraPositionMaster" />
+            <End Role="DamageTransactionDetails" EntitySet="DamageTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageTransactionDetails_DamageTransaction" Association="Self.FK_DamageTransactionDetails_DamageTransaction">
+            <End Role="DamageTransaction" EntitySet="DamageTransaction" />
+            <End Role="DamageTransactionDetails" EntitySet="DamageTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceMaster_DeviceTypeMaster" Association="Self.FK_DeviceMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+            <End Role="DeviceMaster" EntitySet="DeviceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceTypeDetailsMaster_DeviceTypeMaster" Association="Self.FK_DeviceTypeDetailsMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+            <End Role="DeviceTypeDetailsMaster" EntitySet="DeviceTypeDetailsMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaneDeviceMappingMaster_DeviceMaster" Association="Self.FK_LaneDeviceMappingMaster_DeviceMaster">
+            <End Role="DeviceMaster" EntitySet="DeviceMaster" />
+            <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaneDeviceMappingMaster_LaneMaster" Association="Self.FK_LaneDeviceMappingMaster_LaneMaster">
+            <End Role="LaneMaster" EntitySet="LaneMaster" />
+            <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationMaster_LocationTypeMaster" Association="Self.FK_LocationMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+            <End Role="LocationMaster" EntitySet="LocationMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeDetailsMaster_LocationTypeMaster" Association="Self.FK_LocationTypeDetailsMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+            <End Role="LocationTypeDetailsMaster" EntitySet="LocationTypeDetailsMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" Association="Self.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMaster" />
+            <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" Association="Self.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+            <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster" Association="Self.FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMaster" />
+            <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeRoleMappingMaster_RoleMaster" Association="Self.FK_LocationTypeRoleMappingMaster_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_DeployeeFirm" Association="Self.FK_ProjectMaster_DeployeeFirm">
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_DeployerFirm" Association="Self.FK_ProjectMaster_DeployerFirm">
+            <End Role="CompanyMaster" EntitySet="CompanyMaster" />
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_ProjectTypeMaster" Association="Self.FK_ProjectMaster_ProjectTypeMaster">
+            <End Role="ProjectTypeMaster" EntitySet="ProjectTypeMaster" />
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDesignationMappingMaster_DesignationMaster" Association="Self.FK_RoleDesignationMappingMaster_DesignationMaster">
+            <End Role="DesignationMaster" EntitySet="DesignationMaster" />
+            <End Role="RoleDesignationMappingMaster" EntitySet="RoleDesignationMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDesignationMappingMaster_RoleMaster" Association="Self.FK_RoleDesignationMappingMaster_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="RoleDesignationMappingMaster" EntitySet="RoleDesignationMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleScreenMapping_RoleID" Association="Self.FK_RoleScreenMapping_RoleID">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="RoleScreenMapping" EntitySet="RoleScreenMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleScreenMapping_ScreenMaster" Association="Self.FK_RoleScreenMapping_ScreenMaster">
+            <End Role="ScreenMaster" EntitySet="ScreenMaster" />
+            <End Role="RoleScreenMapping" EntitySet="RoleScreenMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster" Association="Self.FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster">
+            <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMaster" />
+            <End Role="TransactionApplicationTypeMappingMaster" EntitySet="TransactionApplicationTypeMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionApplicationTypeMappingMaster_TransactionMaster" Association="Self.FK_TransactionApplicationTypeMappingMaster_TransactionMaster">
+            <End Role="TransactionMaster" EntitySet="TransactionMaster" />
+            <End Role="TransactionApplicationTypeMappingMaster" EntitySet="TransactionApplicationTypeMappingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionFieldMaster_TransactionMaster" Association="Self.FK_TransactionFieldMaster_TransactionMaster">
+            <End Role="TransactionMaster" EntitySet="TransactionMaster" />
+            <End Role="TransactionFieldMaster" EntitySet="TransactionFieldMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaster_DesignationMaster" Association="Self.FK_UserMaster_DesignationMaster">
+            <End Role="DesignationMaster" EntitySet="DesignationMaster" />
+            <End Role="UserMaster" EntitySet="UserMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaster_ReportsToDesignation" Association="Self.FK_UserMaster_ReportsToDesignation">
+            <End Role="DesignationMaster" EntitySet="DesignationMaster" />
+            <End Role="UserMaster" EntitySet="UserMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DIMContainerDB_Revised_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicationMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AuthToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationTypeMaster" Relationship="Self.FK_ApplicationMaster_ApplicationTypeMaster" FromRole="ApplicationMaster" ToRole="ApplicationTypeMaster" />
+          <NavigationProperty Name="ApplicationProjectMappingMasters" Relationship="Self.FK_ApplicationProjectMappingMaster_ApplicationMaster" FromRole="ApplicationMaster" ToRole="ApplicationProjectMappingMaster" />
+        </EntityType>
+        <EntityType Name="ApplicationProjectMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationMaster" Relationship="Self.FK_ApplicationProjectMappingMaster_ApplicationMaster" FromRole="ApplicationProjectMappingMaster" ToRole="ApplicationMaster" />
+          <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_ApplicationProjectMappingMaster_ProjectMaster" FromRole="ApplicationProjectMappingMaster" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="ApplicationTypeDevieTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationTypeMaster" Relationship="Self.FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster" FromRole="ApplicationTypeDevieTypeMaster" ToRole="ApplicationTypeMaster" />
+          <NavigationProperty Name="DeviceTypeMaster" Relationship="Self.FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster" FromRole="ApplicationTypeDevieTypeMaster" ToRole="DeviceTypeMaster" />
+        </EntityType>
+        <EntityType Name="ApplicationTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationMasters" Relationship="Self.FK_ApplicationMaster_ApplicationTypeMaster" FromRole="ApplicationTypeMaster" ToRole="ApplicationMaster" />
+          <NavigationProperty Name="ApplicationTypeDevieTypeMasters" Relationship="Self.FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster" FromRole="ApplicationTypeMaster" ToRole="ApplicationTypeDevieTypeMaster" />
+          <NavigationProperty Name="TransactionApplicationTypeMappingMasters" Relationship="Self.FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster" FromRole="ApplicationTypeMaster" ToRole="TransactionApplicationTypeMappingMaster" />
+        </EntityType>
+        <EntityType Name="CameraDtlsTbl">
+          <Key>
+            <PropertyRef Name="CameraID" />
+          </Key>
+          <Property Name="CameraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CameraIP" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LaneID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CameraPositionMaster" Relationship="Self.FK_CameraDtlsTbl_CameraPositionMaster" FromRole="CameraDtlsTbl" ToRole="CameraPositionMaster" />
+          <NavigationProperty Name="LaneMaster" Relationship="Self.FK_CameraIPDetails_GateDetails" FromRole="CameraDtlsTbl" ToRole="LaneMaster" />
+        </EntityType>
+        <EntityType Name="CameraPositionMaster">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PositionDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContainerVisible" Type="Int32" Nullable="false" />
+          <Property Name="ImageIndex" Type="Int32" />
+          <NavigationProperty Name="CameraDtlsTbls" Relationship="Self.FK_CameraDtlsTbl_CameraPositionMaster" FromRole="CameraPositionMaster" ToRole="CameraDtlsTbl" />
+          <NavigationProperty Name="DamageTransactionDetails" Relationship="Self.FK_DamageTransactionDetails_CameraPositionMaster" FromRole="CameraPositionMaster" ToRole="DamageTransactionDetails" />
+        </EntityType>
+        <EntityType Name="CompanyMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LegalTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyTypeID" Type="Int32" Nullable="false" />
+          <Property Name="HeadOfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyTypeMaster" Relationship="Self.FK_CompanyMaster_CompanyTypeMaster" FromRole="CompanyMaster" ToRole="CompanyTypeMaster" />
+          <NavigationProperty Name="ProjectMasters" Relationship="Self.FK_ProjectMaster_DeployeeFirm" FromRole="CompanyMaster" ToRole="ProjectMaster" />
+          <NavigationProperty Name="ProjectMasters1" Relationship="Self.FK_ProjectMaster_DeployerFirm" FromRole="CompanyMaster" ToRole="ProjectMaster" />
+        </EntityType>
+        <EntityType Name="CompanyTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CompanyMasters" Relationship="Self.FK_CompanyMaster_CompanyTypeMaster" FromRole="CompanyTypeMaster" ToRole="CompanyMaster" />
+        </EntityType>
+        <EntityType Name="ContainerTransaction">
+          <Key>
+            <PropertyRef Name="TransID" />
+          </Key>
+          <Property Name="TransID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShippingLineID" Type="Int32" />
+          <Property Name="TransactionTime" Type="DateTime" Precision="3" />
+          <Property Name="LaneID" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="DmgDtlsID" Type="Int32" />
+          <Property Name="ContainerDmgd" Type="Boolean" />
+          <Property Name="ContainerTypeID" Type="Int32" />
+          <Property Name="ContainerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsoCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VehicleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BATNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Displayed" Type="Boolean" Nullable="false" />
+          <Property Name="DIRLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TrailerTransID" Type="Int32" Nullable="false" />
+          <Property Name="SequnceOfContan" Type="Int32" />
+          <Property Name="EmailImg" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContainerType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsRotateImages" Type="Boolean" />
+          <Property Name="CancelStatus" Type="Boolean" />
+          <Property Name="IsManualTransaction" Type="Boolean" />
+          <Property Name="IsReportCreated" Type="Boolean" />
+          <NavigationProperty Name="ContainerTypeMaster" Relationship="Self.FK_ContainerTransactions_ContainerTypeMaster" FromRole="ContainerTransactions" ToRole="ContainerTypeMaster" />
+          <NavigationProperty Name="DamageTransaction" Relationship="Self.FK_ContainerTransactions_DamageTransaction" FromRole="ContainerTransactions" ToRole="DamageTransaction" />
+          <NavigationProperty Name="LaneMaster" Relationship="Self.FK_ContainerTransactions_LaneMaster" FromRole="ContainerTransactions" ToRole="LaneMaster" />
+          <NavigationProperty Name="ShippingLineMaster" Relationship="Self.FK_ContainerTransactions_ShippingLineMaster" FromRole="ContainerTransactions" ToRole="ShippingLineMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_ContainerTransactions_UserMaster" FromRole="ContainerTransactions" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="ContainerTypeMaster">
+          <Key>
+            <PropertyRef Name="ContainerTypeID" />
+          </Key>
+          <Property Name="ContainerTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ContainerTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_ContainerTypeMaster" FromRole="ContainerTypeMaster" ToRole="ContainerTransactions" />
+        </EntityType>
+        <EntityType Name="DamageTransaction">
+          <Key>
+            <PropertyRef Name="DmgDtlsID" />
+          </Key>
+          <Property Name="DmgDtlsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemarkCam1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RemarkCam2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RemarkCam3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RemarkCam4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RemarkCam5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RemarkCam6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RemarkCam7" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommonRemark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DmgdTypeCam7" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommonDmgTypes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_DamageTransaction" FromRole="DamageTransaction" ToRole="ContainerTransactions" />
+          <NavigationProperty Name="DamageTransactionDetails" Relationship="Self.FK_DamageTransactionDetails_DamageTransaction" FromRole="DamageTransaction" ToRole="DamageTransactionDetails" />
+        </EntityType>
+        <EntityType Name="DamageTransactionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DmgDtlsID" Type="Int32" Nullable="false" />
+          <Property Name="DamageRemark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DamageTypes" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CamPosID" Type="Int32" />
+          <Property Name="IsCommonRemark" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CameraPositionMaster" Relationship="Self.FK_DamageTransactionDetails_CameraPositionMaster" FromRole="DamageTransactionDetails" ToRole="CameraPositionMaster" />
+          <NavigationProperty Name="DamageTransaction" Relationship="Self.FK_DamageTransactionDetails_DamageTransaction" FromRole="DamageTransactionDetails" ToRole="DamageTransaction" />
+        </EntityType>
+        <EntityType Name="DamageTypeMaster">
+          <Key>
+            <PropertyRef Name="DmgTypeid" />
+          </Key>
+          <Property Name="DmgTypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DmgTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorUserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DesignationMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DesignationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RoleDesignationMappingMasters" Relationship="Self.FK_RoleDesignationMappingMaster_DesignationMaster" FromRole="DesignationMaster" ToRole="RoleDesignationMappingMaster" />
+          <NavigationProperty Name="UserMasters" Relationship="DIMContainerDB_Revised_DevModel.FK_UserMaster_DesignationMaster" FromRole="DesignationMaster" ToRole="UserMaster" />
+          <NavigationProperty Name="UserMasters1" Relationship="DIMContainerDB_Revised_DevModel.FK_UserMaster_ReportsToDesignation" FromRole="DesignationMaster" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="DeviceMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceMACAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DeviceTypeMaster" Relationship="Self.FK_DeviceMaster_DeviceTypeMaster" FromRole="DeviceMaster" ToRole="DeviceTypeMaster" />
+          <NavigationProperty Name="LaneDeviceMappingMasters" Relationship="Self.FK_LaneDeviceMappingMaster_DeviceMaster" FromRole="DeviceMaster" ToRole="LaneDeviceMappingMaster" />
+        </EntityType>
+        <EntityType Name="DeviceTypeDetailsMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PropertyKey" Type="Int32" Nullable="false" />
+          <Property Name="PropertyValue" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DeviceTypeMaster" Relationship="Self.FK_DeviceTypeDetailsMaster_DeviceTypeMaster" FromRole="DeviceTypeDetailsMaster" ToRole="DeviceTypeMaster" />
+        </EntityType>
+        <EntityType Name="DeviceTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationTypeDevieTypeMasters" Relationship="Self.FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster" FromRole="DeviceTypeMaster" ToRole="ApplicationTypeDevieTypeMaster" />
+          <NavigationProperty Name="DeviceMasters" Relationship="Self.FK_DeviceMaster_DeviceTypeMaster" FromRole="DeviceTypeMaster" ToRole="DeviceMaster" />
+          <NavigationProperty Name="DeviceTypeDetailsMasters" Relationship="Self.FK_DeviceTypeDetailsMaster_DeviceTypeMaster" FromRole="DeviceTypeMaster" ToRole="DeviceTypeDetailsMaster" />
+          <NavigationProperty Name="LocationTypeDeviceTypeMappingMasters" Relationship="Self.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" FromRole="DeviceTypeMaster" ToRole="LocationTypeDeviceTypeMappingMaster" />
+        </EntityType>
+        <EntityType Name="LaneMaster">
+          <Key>
+            <PropertyRef Name="LaneID" />
+          </Key>
+          <Property Name="LaneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfGate" Type="Int32" Nullable="false" />
+          <Property Name="LaneName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorUserID" Type="Int32" />
+          <Property Name="TransactionsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsBusy" Type="Boolean" />
+          <NavigationProperty Name="CameraDtlsTbls" Relationship="Self.FK_CameraIPDetails_GateDetails" FromRole="LaneMaster" ToRole="CameraDtlsTbl" />
+          <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_LaneMaster" FromRole="LaneMaster" ToRole="ContainerTransactions" />
+          <NavigationProperty Name="LaneDeviceMappingMasters" Relationship="Self.FK_LaneDeviceMappingMaster_LaneMaster" FromRole="LaneMaster" ToRole="LaneDeviceMappingMaster" />
+        </EntityType>
+        <EntityType Name="LocationMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="LocationDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LocationTypeMaster" Relationship="Self.FK_LocationMaster_LocationTypeMaster" FromRole="LocationMaster" ToRole="LocationTypeMaster" />
+        </EntityType>
+        <EntityType Name="LocationTypeDetailsMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PropertyKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PropertyValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LocationTypeMaster" Relationship="Self.FK_LocationTypeDetailsMaster_LocationTypeMaster" FromRole="LocationTypeDetailsMaster" ToRole="LocationTypeMaster" />
+        </EntityType>
+        <EntityType Name="LocationTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocationTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsGate" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorUserID" Type="Int32" Nullable="false" />
+          <Property Name="IsTransactionEnabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LocationMasters" Relationship="Self.FK_LocationMaster_LocationTypeMaster" FromRole="LocationTypeMaster" ToRole="LocationMaster" />
+          <NavigationProperty Name="LocationTypeDetailsMasters" Relationship="Self.FK_LocationTypeDetailsMaster_LocationTypeMaster" FromRole="LocationTypeMaster" ToRole="LocationTypeDetailsMaster" />
+          <NavigationProperty Name="LocationTypeDeviceTypeMappingMasters" Relationship="Self.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" FromRole="LocationTypeMaster" ToRole="LocationTypeDeviceTypeMappingMaster" />
+          <NavigationProperty Name="LocationTypeRoleMappingMasters" Relationship="Self.FK_LocationTypeRoleMappingMaster_LocationTypeMaster" FromRole="LocationTypeMaster" ToRole="LocationTypeRoleMappingMaster" />
+        </EntityType>
+        <EntityType Name="LocationTypeRoleMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LocationTypeMaster" Relationship="Self.FK_LocationTypeRoleMappingMaster_LocationTypeMaster" FromRole="LocationTypeRoleMappingMaster" ToRole="LocationTypeMaster" />
+          <NavigationProperty Name="RoleMaster" Relationship="Self.FK_LocationTypeRoleMappingMaster_RoleMaster" FromRole="LocationTypeRoleMappingMaster" ToRole="RoleMaster" />
+        </EntityType>
+        <EntityType Name="ProjectMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeployerFirm" Type="Int32" Nullable="false" />
+          <Property Name="DeployeeFirm" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationProjectMappingMasters" Relationship="Self.FK_ApplicationProjectMappingMaster_ProjectMaster" FromRole="ProjectMaster" ToRole="ApplicationProjectMappingMaster" />
+          <NavigationProperty Name="CompanyMaster" Relationship="Self.FK_ProjectMaster_DeployeeFirm" FromRole="ProjectMaster" ToRole="CompanyMaster" />
+          <NavigationProperty Name="CompanyMaster1" Relationship="Self.FK_ProjectMaster_DeployerFirm" FromRole="ProjectMaster" ToRole="CompanyMaster" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectTypeMaster" Relationship="DIMContainerDB_Revised_DevModel.FK_ProjectMaster_ProjectTypeMaster" FromRole="ProjectMaster" ToRole="ProjectTypeMaster" />
+        </EntityType>
+        <EntityType Name="RoleDesignationMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DesignationID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DesignationMaster" Relationship="Self.FK_RoleDesignationMappingMaster_DesignationMaster" FromRole="RoleDesignationMappingMaster" ToRole="DesignationMaster" />
+          <NavigationProperty Name="RoleMaster" Relationship="Self.FK_RoleDesignationMappingMaster_RoleMaster" FromRole="RoleDesignationMappingMaster" ToRole="RoleMaster" />
+        </EntityType>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsSuperUser" Type="Boolean" />
+          <NavigationProperty Name="LocationTypeRoleMappingMasters" Relationship="Self.FK_LocationTypeRoleMappingMaster_RoleMaster" FromRole="RoleMaster" ToRole="LocationTypeRoleMappingMaster" />
+          <NavigationProperty Name="RoleDesignationMappingMasters" Relationship="Self.FK_RoleDesignationMappingMaster_RoleMaster" FromRole="RoleMaster" ToRole="RoleDesignationMappingMaster" />
+          <NavigationProperty Name="RoleScreenMappings" Relationship="Self.FK_RoleScreenMapping_RoleID" FromRole="RoleMaster" ToRole="RoleScreenMapping" />
+        </EntityType>
+        <EntityType Name="RoleScreenMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="ScreenID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoleMaster" Relationship="Self.FK_RoleScreenMapping_RoleID" FromRole="RoleScreenMapping" ToRole="RoleMaster" />
+          <NavigationProperty Name="ScreenMaster" Relationship="Self.FK_RoleScreenMapping_ScreenMaster" FromRole="RoleScreenMapping" ToRole="ScreenMaster" />
+        </EntityType>
+        <EntityType Name="ScreenMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScreenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ScreenUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RoleScreenMappings" Relationship="Self.FK_RoleScreenMapping_ScreenMaster" FromRole="ScreenMaster" ToRole="RoleScreenMapping" />
+        </EntityType>
+        <EntityType Name="ShippingLineMaster">
+          <Key>
+            <PropertyRef Name="ShippingLineID" />
+          </Key>
+          <Property Name="ShippingLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShippingLineName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="faxno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emailid1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emailid2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emailid3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_ShippingLineMaster" FromRole="ShippingLineMaster" ToRole="ContainerTransactions" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TransactionApplicationTypeMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationTypeMaster" Relationship="Self.FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster" FromRole="TransactionApplicationTypeMappingMaster" ToRole="ApplicationTypeMaster" />
+          <NavigationProperty Name="TransactionMaster" Relationship="Self.FK_TransactionApplicationTypeMappingMaster_TransactionMaster" FromRole="TransactionApplicationTypeMappingMaster" ToRole="TransactionMaster" />
+        </EntityType>
+        <EntityType Name="TransactionFieldMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionFieldName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TransactionFieldType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsForeignKey" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignKeyTableName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ForeignKeyColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TransactionMaster" Relationship="Self.FK_TransactionFieldMaster_TransactionMaster" FromRole="TransactionFieldMaster" ToRole="TransactionMaster" />
+        </EntityType>
+        <EntityType Name="TransactionMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TransactionApplicationTypeMappingMasters" Relationship="Self.FK_TransactionApplicationTypeMappingMaster_TransactionMaster" FromRole="TransactionMaster" ToRole="TransactionApplicationTypeMappingMaster" />
+          <NavigationProperty Name="TransactionFieldMasters" Relationship="Self.FK_TransactionFieldMaster_TransactionMaster" FromRole="TransactionMaster" ToRole="TransactionFieldMaster" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsLoggedin" Type="Boolean" Nullable="false" />
+          <Property Name="DeviceID" Type="Int32" />
+          <Property Name="DesignationID" Type="Int32" />
+          <Property Name="ReportsTo" Type="Int32" />
+          <NavigationProperty Name="ContainerTransactions" Relationship="Self.FK_ContainerTransactions_UserMaster" FromRole="UserMaster" ToRole="ContainerTransactions" />
+          <NavigationProperty Name="DesignationMaster" Relationship="DIMContainerDB_Revised_DevModel.FK_UserMaster_DesignationMaster" FromRole="UserMaster" ToRole="DesignationMaster" />
+          <NavigationProperty Name="DesignationMaster1" Relationship="DIMContainerDB_Revised_DevModel.FK_UserMaster_ReportsToDesignation" FromRole="UserMaster" ToRole="DesignationMaster" />
+        </EntityType>
+        <EntityType Name="ApplicationConfig">
+          <Key>
+            <PropertyRef Name="ShiftStartTime" />
+          </Key>
+          <Property Name="ShiftStartTime" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaneDeviceMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LaneID" />
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LaneID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DeviceMaster" Relationship="Self.FK_LaneDeviceMappingMaster_DeviceMaster" FromRole="LaneDeviceMappingMaster" ToRole="DeviceMaster" />
+          <NavigationProperty Name="LaneMaster" Relationship="Self.FK_LaneDeviceMappingMaster_LaneMaster" FromRole="LaneDeviceMappingMaster" ToRole="LaneMaster" />
+        </EntityType>
+        <EntityType Name="LocationTypeDeviceTypeMappingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LocationTypeID" />
+            <PropertyRef Name="DeviceTypeID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DeviceTypeMaster" Relationship="Self.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" FromRole="LocationTypeDeviceTypeMappingMaster" ToRole="DeviceTypeMaster" />
+          <NavigationProperty Name="LocationTypeMaster" Relationship="Self.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" FromRole="LocationTypeDeviceTypeMappingMaster" ToRole="LocationTypeMaster" />
+        </EntityType>
+        <EntityType Name="OwnerCodeMaster">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+            <PropertyRef Name="OwnerCode" />
+          </Key>
+          <Property Name="OwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorUserID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_ApplicationMaster_ApplicationTypeMaster">
+          <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+          <End Role="ApplicationMaster" Type="Self.ApplicationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationMaster">
+              <PropertyRef Name="ApplicationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationProjectMappingMaster_ApplicationMaster">
+          <End Role="ApplicationMaster" Type="Self.ApplicationMaster" Multiplicity="1" />
+          <End Role="ApplicationProjectMappingMaster" Type="Self.ApplicationProjectMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationProjectMappingMaster">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationProjectMappingMaster_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="ApplicationProjectMappingMaster" Type="Self.ApplicationProjectMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationProjectMappingMaster">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster">
+          <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+          <End Role="ApplicationTypeDevieTypeMaster" Type="Self.ApplicationTypeDevieTypeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationTypeDevieTypeMaster">
+              <PropertyRef Name="ApplicationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="ApplicationTypeDevieTypeMaster" Type="Self.ApplicationTypeDevieTypeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationTypeDevieTypeMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster">
+          <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+          <End Role="TransactionApplicationTypeMappingMaster" Type="Self.TransactionApplicationTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionApplicationTypeMappingMaster">
+              <PropertyRef Name="ApplicationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CameraDtlsTbl_CameraPositionMaster">
+          <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="1" />
+          <End Role="CameraDtlsTbl" Type="Self.CameraDtlsTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CameraPositionMaster">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="CameraDtlsTbl">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CameraIPDetails_GateDetails">
+          <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="1" />
+          <End Role="CameraDtlsTbl" Type="Self.CameraDtlsTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaneMaster">
+              <PropertyRef Name="LaneID" />
+            </Principal>
+            <Dependent Role="CameraDtlsTbl">
+              <PropertyRef Name="LaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageTransactionDetails_CameraPositionMaster">
+          <End Role="CameraPositionMaster" Type="Self.CameraPositionMaster" Multiplicity="0..1" />
+          <End Role="DamageTransactionDetails" Type="Self.DamageTransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CameraPositionMaster">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="DamageTransactionDetails">
+              <PropertyRef Name="CamPosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyMaster_CompanyTypeMaster">
+          <End Role="CompanyTypeMaster" Type="Self.CompanyTypeMaster" Multiplicity="1" />
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompanyMaster">
+              <PropertyRef Name="CompanyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_DeployeeFirm">
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="1" />
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="DeployeeFirm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMaster_DeployerFirm">
+          <End Role="CompanyMaster" Type="Self.CompanyMaster" Multiplicity="1" />
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="DeployerFirm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_ContainerTypeMaster">
+          <End Role="ContainerTypeMaster" Type="Self.ContainerTypeMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContainerTypeMaster">
+              <PropertyRef Name="ContainerTypeID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="ContainerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_DamageTransaction">
+          <End Role="DamageTransaction" Type="Self.DamageTransaction" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DamageTransaction">
+              <PropertyRef Name="DmgDtlsID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="DmgDtlsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_LaneMaster">
+          <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaneMaster">
+              <PropertyRef Name="LaneID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="LaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_ShippingLineMaster">
+          <End Role="ShippingLineMaster" Type="Self.ShippingLineMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShippingLineMaster">
+              <PropertyRef Name="ShippingLineID" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="ShippingLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContainerTransactions_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
+          <End Role="ContainerTransactions" Type="Self.ContainerTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ContainerTransactions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageTransactionDetails_DamageTransaction">
+          <End Role="DamageTransaction" Type="Self.DamageTransaction" Multiplicity="1" />
+          <End Role="DamageTransactionDetails" Type="Self.DamageTransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DamageTransaction">
+              <PropertyRef Name="DmgDtlsID" />
+            </Principal>
+            <Dependent Role="DamageTransactionDetails">
+              <PropertyRef Name="DmgDtlsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDesignationMappingMaster_DesignationMaster">
+          <End Role="DesignationMaster" Type="Self.DesignationMaster" Multiplicity="1" />
+          <End Role="RoleDesignationMappingMaster" Type="Self.RoleDesignationMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleDesignationMappingMaster">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeviceMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaneDeviceMappingMaster_DeviceMaster">
+          <End Role="DeviceMaster" Type="Self.DeviceMaster" Multiplicity="1" />
+          <End Role="LaneDeviceMappingMaster" Type="Self.LaneDeviceMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LaneDeviceMappingMaster">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceTypeDetailsMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="DeviceTypeDetailsMaster" Type="Self.DeviceTypeDetailsMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeviceTypeDetailsMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+          <End Role="DeviceTypeMaster" Type="Self.DeviceTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeDeviceTypeMappingMaster" Type="Self.LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaneDeviceMappingMaster_LaneMaster">
+          <End Role="LaneMaster" Type="Self.LaneMaster" Multiplicity="1" />
+          <End Role="LaneDeviceMappingMaster" Type="Self.LaneDeviceMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaneMaster">
+              <PropertyRef Name="LaneID" />
+            </Principal>
+            <Dependent Role="LaneDeviceMappingMaster">
+              <PropertyRef Name="LaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationMaster" Type="Self.LocationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeDetailsMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeDetailsMaster" Type="Self.LocationTypeDetailsMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeDetailsMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeDeviceTypeMappingMaster" Type="Self.LocationTypeDeviceTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeDeviceTypeMappingMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+          <End Role="LocationTypeMaster" Type="Self.LocationTypeMaster" Multiplicity="1" />
+          <End Role="LocationTypeRoleMappingMaster" Type="Self.LocationTypeRoleMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeRoleMappingMaster">
+              <PropertyRef Name="LocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationTypeRoleMappingMaster_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="LocationTypeRoleMappingMaster" Type="Self.LocationTypeRoleMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationTypeRoleMappingMaster">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDesignationMappingMaster_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="RoleDesignationMappingMaster" Type="Self.RoleDesignationMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleDesignationMappingMaster">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleScreenMapping_RoleID">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RoleScreenMapping" Type="Self.RoleScreenMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleScreenMapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleScreenMapping_ScreenMaster">
+          <End Role="ScreenMaster" Type="Self.ScreenMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RoleScreenMapping" Type="Self.RoleScreenMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScreenMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleScreenMapping">
+              <PropertyRef Name="ScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionApplicationTypeMappingMaster_TransactionMaster">
+          <End Role="TransactionMaster" Type="Self.TransactionMaster" Multiplicity="1" />
+          <End Role="TransactionApplicationTypeMappingMaster" Type="Self.TransactionApplicationTypeMappingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionApplicationTypeMappingMaster">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionFieldMaster_TransactionMaster">
+          <End Role="TransactionMaster" Type="Self.TransactionMaster" Multiplicity="1" />
+          <End Role="TransactionFieldMaster" Type="Self.TransactionFieldMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionFieldMaster">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DIMContainerDB_Revised_DevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationMasters" EntityType="Self.ApplicationMaster" />
+          <EntitySet Name="ApplicationProjectMappingMasters" EntityType="Self.ApplicationProjectMappingMaster" />
+          <EntitySet Name="ApplicationTypeDevieTypeMasters" EntityType="Self.ApplicationTypeDevieTypeMaster" />
+          <EntitySet Name="ApplicationTypeMasters" EntityType="Self.ApplicationTypeMaster" />
+          <EntitySet Name="CameraDtlsTbls" EntityType="Self.CameraDtlsTbl" />
+          <EntitySet Name="CameraPositionMasters" EntityType="Self.CameraPositionMaster" />
+          <EntitySet Name="CompanyMasters" EntityType="Self.CompanyMaster" />
+          <EntitySet Name="CompanyTypeMasters" EntityType="Self.CompanyTypeMaster" />
+          <EntitySet Name="ContainerTransactions" EntityType="Self.ContainerTransaction" />
+          <EntitySet Name="ContainerTypeMasters" EntityType="Self.ContainerTypeMaster" />
+          <EntitySet Name="DamageTransactions" EntityType="Self.DamageTransaction" />
+          <EntitySet Name="DamageTransactionDetails" EntityType="Self.DamageTransactionDetail" />
+          <EntitySet Name="DamageTypeMasters" EntityType="Self.DamageTypeMaster" />
+          <EntitySet Name="DesignationMasters" EntityType="Self.DesignationMaster" />
+          <EntitySet Name="DeviceMasters" EntityType="Self.DeviceMaster" />
+          <EntitySet Name="DeviceTypeDetailsMasters" EntityType="Self.DeviceTypeDetailsMaster" />
+          <EntitySet Name="DeviceTypeMasters" EntityType="Self.DeviceTypeMaster" />
+          <EntitySet Name="LaneMasters" EntityType="Self.LaneMaster" />
+          <EntitySet Name="LocationMasters" EntityType="Self.LocationMaster" />
+          <EntitySet Name="LocationTypeDetailsMasters" EntityType="Self.LocationTypeDetailsMaster" />
+          <EntitySet Name="LocationTypeMasters" EntityType="Self.LocationTypeMaster" />
+          <EntitySet Name="LocationTypeRoleMappingMasters" EntityType="Self.LocationTypeRoleMappingMaster" />
+          <EntitySet Name="ProjectMasters" EntityType="Self.ProjectMaster" />
+          <EntitySet Name="RoleDesignationMappingMasters" EntityType="Self.RoleDesignationMappingMaster" />
+          <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
+          <EntitySet Name="RoleScreenMappings" EntityType="Self.RoleScreenMapping" />
+          <EntitySet Name="ScreenMasters" EntityType="Self.ScreenMaster" />
+          <EntitySet Name="ShippingLineMasters" EntityType="Self.ShippingLineMaster" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TransactionApplicationTypeMappingMasters" EntityType="Self.TransactionApplicationTypeMappingMaster" />
+          <EntitySet Name="TransactionFieldMasters" EntityType="Self.TransactionFieldMaster" />
+          <EntitySet Name="TransactionMasters" EntityType="Self.TransactionMaster" />
+          <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+          <EntitySet Name="ApplicationConfigs" EntityType="Self.ApplicationConfig" />
+          <EntitySet Name="LaneDeviceMappingMasters" EntityType="Self.LaneDeviceMappingMaster" />
+          <EntitySet Name="LocationTypeDeviceTypeMappingMasters" EntityType="Self.LocationTypeDeviceTypeMappingMaster" />
+          <EntitySet Name="OwnerCodeMasters" EntityType="Self.OwnerCodeMaster" />
+          <AssociationSet Name="FK_ApplicationMaster_ApplicationTypeMaster" Association="Self.FK_ApplicationMaster_ApplicationTypeMaster">
+            <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMasters" />
+            <End Role="ApplicationMaster" EntitySet="ApplicationMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationProjectMappingMaster_ApplicationMaster" Association="Self.FK_ApplicationProjectMappingMaster_ApplicationMaster">
+            <End Role="ApplicationMaster" EntitySet="ApplicationMasters" />
+            <End Role="ApplicationProjectMappingMaster" EntitySet="ApplicationProjectMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationProjectMappingMaster_ProjectMaster" Association="Self.FK_ApplicationProjectMappingMaster_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="ApplicationProjectMappingMaster" EntitySet="ApplicationProjectMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster" Association="Self.FK_ApplicationTypeDevieTypeMaster_ApplicationTypeMaster">
+            <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMasters" />
+            <End Role="ApplicationTypeDevieTypeMaster" EntitySet="ApplicationTypeDevieTypeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster" Association="Self.FK_ApplicationTypeDevieTypeMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+            <End Role="ApplicationTypeDevieTypeMaster" EntitySet="ApplicationTypeDevieTypeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster" Association="Self.FK_TransactionApplicationTypeMappingMaster_ApplicationTypeMaster">
+            <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMasters" />
+            <End Role="TransactionApplicationTypeMappingMaster" EntitySet="TransactionApplicationTypeMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CameraDtlsTbl_CameraPositionMaster" Association="Self.FK_CameraDtlsTbl_CameraPositionMaster">
+            <End Role="CameraPositionMaster" EntitySet="CameraPositionMasters" />
+            <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CameraIPDetails_GateDetails" Association="Self.FK_CameraIPDetails_GateDetails">
+            <End Role="LaneMaster" EntitySet="LaneMasters" />
+            <End Role="CameraDtlsTbl" EntitySet="CameraDtlsTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageTransactionDetails_CameraPositionMaster" Association="Self.FK_DamageTransactionDetails_CameraPositionMaster">
+            <End Role="CameraPositionMaster" EntitySet="CameraPositionMasters" />
+            <End Role="DamageTransactionDetails" EntitySet="DamageTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyMaster_CompanyTypeMaster" Association="Self.FK_CompanyMaster_CompanyTypeMaster">
+            <End Role="CompanyTypeMaster" EntitySet="CompanyTypeMasters" />
+            <End Role="CompanyMaster" EntitySet="CompanyMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_DeployeeFirm" Association="Self.FK_ProjectMaster_DeployeeFirm">
+            <End Role="CompanyMaster" EntitySet="CompanyMasters" />
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMaster_DeployerFirm" Association="Self.FK_ProjectMaster_DeployerFirm">
+            <End Role="CompanyMaster" EntitySet="CompanyMasters" />
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_ContainerTypeMaster" Association="Self.FK_ContainerTransactions_ContainerTypeMaster">
+            <End Role="ContainerTypeMaster" EntitySet="ContainerTypeMasters" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_DamageTransaction" Association="Self.FK_ContainerTransactions_DamageTransaction">
+            <End Role="DamageTransaction" EntitySet="DamageTransactions" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_LaneMaster" Association="Self.FK_ContainerTransactions_LaneMaster">
+            <End Role="LaneMaster" EntitySet="LaneMasters" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_ShippingLineMaster" Association="Self.FK_ContainerTransactions_ShippingLineMaster">
+            <End Role="ShippingLineMaster" EntitySet="ShippingLineMasters" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContainerTransactions_UserMaster" Association="Self.FK_ContainerTransactions_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="ContainerTransactions" EntitySet="ContainerTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageTransactionDetails_DamageTransaction" Association="Self.FK_DamageTransactionDetails_DamageTransaction">
+            <End Role="DamageTransaction" EntitySet="DamageTransactions" />
+            <End Role="DamageTransactionDetails" EntitySet="DamageTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDesignationMappingMaster_DesignationMaster" Association="Self.FK_RoleDesignationMappingMaster_DesignationMaster">
+            <End Role="DesignationMaster" EntitySet="DesignationMasters" />
+            <End Role="RoleDesignationMappingMaster" EntitySet="RoleDesignationMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceMaster_DeviceTypeMaster" Association="Self.FK_DeviceMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+            <End Role="DeviceMaster" EntitySet="DeviceMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaneDeviceMappingMaster_DeviceMaster" Association="Self.FK_LaneDeviceMappingMaster_DeviceMaster">
+            <End Role="DeviceMaster" EntitySet="DeviceMasters" />
+            <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceTypeDetailsMaster_DeviceTypeMaster" Association="Self.FK_DeviceTypeDetailsMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+            <End Role="DeviceTypeDetailsMaster" EntitySet="DeviceTypeDetailsMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster" Association="Self.FK_LocationTypeDeviceTypeMappingMaster_DeviceTypeMaster">
+            <End Role="DeviceTypeMaster" EntitySet="DeviceTypeMasters" />
+            <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaneDeviceMappingMaster_LaneMaster" Association="Self.FK_LaneDeviceMappingMaster_LaneMaster">
+            <End Role="LaneMaster" EntitySet="LaneMasters" />
+            <End Role="LaneDeviceMappingMaster" EntitySet="LaneDeviceMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationMaster_LocationTypeMaster" Association="Self.FK_LocationMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+            <End Role="LocationMaster" EntitySet="LocationMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeDetailsMaster_LocationTypeMaster" Association="Self.FK_LocationTypeDetailsMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+            <End Role="LocationTypeDetailsMaster" EntitySet="LocationTypeDetailsMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster" Association="Self.FK_LocationTypeDeviceTypeMappingMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+            <End Role="LocationTypeDeviceTypeMappingMaster" EntitySet="LocationTypeDeviceTypeMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeRoleMappingMaster_LocationTypeMaster" Association="Self.FK_LocationTypeRoleMappingMaster_LocationTypeMaster">
+            <End Role="LocationTypeMaster" EntitySet="LocationTypeMasters" />
+            <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationTypeRoleMappingMaster_RoleMaster" Association="Self.FK_LocationTypeRoleMappingMaster_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="LocationTypeRoleMappingMaster" EntitySet="LocationTypeRoleMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDesignationMappingMaster_RoleMaster" Association="Self.FK_RoleDesignationMappingMaster_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="RoleDesignationMappingMaster" EntitySet="RoleDesignationMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleScreenMapping_RoleID" Association="Self.FK_RoleScreenMapping_RoleID">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="RoleScreenMapping" EntitySet="RoleScreenMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleScreenMapping_ScreenMaster" Association="Self.FK_RoleScreenMapping_ScreenMaster">
+            <End Role="ScreenMaster" EntitySet="ScreenMasters" />
+            <End Role="RoleScreenMapping" EntitySet="RoleScreenMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionApplicationTypeMappingMaster_TransactionMaster" Association="Self.FK_TransactionApplicationTypeMappingMaster_TransactionMaster">
+            <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+            <End Role="TransactionApplicationTypeMappingMaster" EntitySet="TransactionApplicationTypeMappingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionFieldMaster_TransactionMaster" Association="Self.FK_TransactionFieldMaster_TransactionMaster">
+            <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+            <End Role="TransactionFieldMaster" EntitySet="TransactionFieldMasters" />
+          </AssociationSet>
+          <FunctionImport Name="CameraPositionID" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="fetch_image_details" ReturnType="Collection(Int32)">
+          <Parameter Name="TransactionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="savecamerapositionngdata" ReturnType="Collection(Int32)">
+            <Parameter Name="positiondescription" Mode="In" Type="String" />
+            <Parameter Name="userdescriptionposition" Mode="In" Type="String" />
+            <Parameter Name="containervisible" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetMissingTransactions">
+            <Parameter Name="StartTime" Mode="In" Type="DateTime" />
+            <Parameter Name="EndTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetScreensFromRoleID" ReturnType="Collection(DIMContainerDB_Revised_DevModel.sp_GetScreensFromRoleID_Result)">
+          <Parameter Name="RoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DIMContainerDB_Revised_DevModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DIMContainerDB_Revised_DevModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_MapScreensToRoles">
+          <Parameter Name="RoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_StoreDamageDetails" />
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_UserLogout">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spsavecameradata" ReturnType="Collection(Int32)">
+            <Parameter Name="cameraip" Mode="In" Type="String" />
+            <Parameter Name="laneid" Mode="In" Type="String" />
+            <Parameter Name="positiondesc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spsavelanedata">
+            <Parameter Name="ingate" Mode="In" Type="String" />
+            <Parameter Name="lanename" Mode="In" Type="String" />
+            <Parameter Name="busy" Mode="In" Type="String" />
+            <Parameter Name="ipaddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spsaveshippinglinedata">
+            <Parameter Name="shippinglinename" Mode="In" Type="String" />
+            <Parameter Name="companyaddr" Mode="In" Type="String" />
+            <Parameter Name="phoneno" Mode="In" Type="String" />
+            <Parameter Name="faxno" Mode="In" Type="String" />
+            <Parameter Name="emailid1" Mode="In" Type="String" />
+            <Parameter Name="emailid2" Mode="In" Type="String" />
+            <Parameter Name="emailid3" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spupdatecamerapositioningdata">
+            <Parameter Name="primarykey" Mode="In" Type="String" />
+            <Parameter Name="positiondescription" Mode="In" Type="String" />
+            <Parameter Name="userdescriptionposition" Mode="In" Type="String" />
+            <Parameter Name="containervisible" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updatecamera">
+            <Parameter Name="ipofcamera" Mode="In" Type="String" />
+            <Parameter Name="cameraid" Mode="In" Type="Int32" />
+            <Parameter Name="laneid" Mode="In" Type="String" />
+            <Parameter Name="positiondesc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateEmptytransaction">
+          <Parameter Name="TransiD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updatelanedata">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="ingate" Mode="In" Type="String" />
+            <Parameter Name="lanenameold" Mode="In" Type="String" />
+            <Parameter Name="lanenamenew" Mode="In" Type="String" />
+            <Parameter Name="busy" Mode="In" Type="Int32" />
+            <Parameter Name="ipaddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updateshippingline">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="shippinglinenamenew" Mode="In" Type="String" />
+            <Parameter Name="shippinglinenameold" Mode="In" Type="String" />
+            <Parameter Name="companyaddress" Mode="In" Type="String" />
+            <Parameter Name="companyphoneno" Mode="In" Type="String" />
+            <Parameter Name="faxno" Mode="In" Type="String" />
+            <Parameter Name="emailid1" Mode="In" Type="String" />
+            <Parameter Name="emailid2" Mode="In" Type="String" />
+            <Parameter Name="emailid3" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ProjectTypeMasters" EntityType="DIMContainerDB_Revised_DevModel.ProjectTypeMaster" />
+          <AssociationSet Name="FK_ProjectMaster_ProjectTypeMaster" Association="DIMContainerDB_Revised_DevModel.FK_ProjectMaster_ProjectTypeMaster">
+            <End Role="ProjectTypeMaster" EntitySet="ProjectTypeMasters" />
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaster_DesignationMaster" Association="DIMContainerDB_Revised_DevModel.FK_UserMaster_DesignationMaster">
+            <End Role="DesignationMaster" EntitySet="DesignationMasters" />
+            <End Role="UserMaster" EntitySet="UserMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaster_ReportsToDesignation" Association="DIMContainerDB_Revised_DevModel.FK_UserMaster_ReportsToDesignation">
+            <End Role="DesignationMaster" EntitySet="DesignationMasters" />
+            <End Role="UserMaster" EntitySet="UserMasters" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_GetScreensFromRoleID_Result">
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ScreenName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ScreenUrl" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="ProjectTypeMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectMasters" Relationship="DIMContainerDB_Revised_DevModel.FK_ProjectMaster_ProjectTypeMaster" FromRole="ProjectTypeMaster" ToRole="ProjectMaster" />
+          </EntityType>
+        <Association Name="FK_ProjectMaster_ProjectTypeMaster">
+          <End Type="DIMContainerDB_Revised_DevModel.ProjectTypeMaster" Role="ProjectTypeMaster" Multiplicity="1" />
+          <End Type="DIMContainerDB_Revised_DevModel.ProjectMaster" Role="ProjectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTypeMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectMaster">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaster_DesignationMaster">
+          <End Type="DIMContainerDB_Revised_DevModel.DesignationMaster" Role="DesignationMaster" Multiplicity="0..1" />
+          <End Type="DIMContainerDB_Revised_DevModel.UserMaster" Role="UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaster_ReportsToDesignation">
+          <End Type="DIMContainerDB_Revised_DevModel.DesignationMaster" Role="DesignationMaster" Multiplicity="0..1" />
+          <End Type="DIMContainerDB_Revised_DevModel.UserMaster" Role="UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="ReportsTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DIMContainerDB_Revised_DevModelStoreContainer" CdmEntityContainer="DIMContainerDB_Revised_DevEntities">
+          <EntitySetMapping Name="ApplicationMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationMaster">
+              <MappingFragment StoreEntitySet="ApplicationMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationDesc" ColumnName="ApplicationDesc" />
+                <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+                <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationProjectMappingMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationProjectMappingMaster">
+              <MappingFragment StoreEntitySet="ApplicationProjectMappingMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationTypeDevieTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationTypeDevieTypeMaster">
+              <MappingFragment StoreEntitySet="ApplicationTypeDevieTypeMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+                <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationTypeMaster">
+              <MappingFragment StoreEntitySet="ApplicationTypeMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApplicationTypeName" ColumnName="ApplicationTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CameraDtlsTbls">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CameraDtlsTbl">
+              <MappingFragment StoreEntitySet="CameraDtlsTbl">
+                <ScalarProperty Name="CameraID" ColumnName="CameraID" />
+                <ScalarProperty Name="CameraIP" ColumnName="CameraIP" />
+                <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CameraPositionMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CameraPositionMaster">
+              <MappingFragment StoreEntitySet="CameraPositionMaster">
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+                <ScalarProperty Name="ContainerVisible" ColumnName="ContainerVisible" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CompanyMaster">
+              <MappingFragment StoreEntitySet="CompanyMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LegalTitle" ColumnName="LegalTitle" />
+                <ScalarProperty Name="CompanyTypeID" ColumnName="CompanyTypeID" />
+                <ScalarProperty Name="HeadOfficeAddress" ColumnName="HeadOfficeAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.CompanyTypeMaster">
+              <MappingFragment StoreEntitySet="CompanyTypeMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContainerTransactions">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ContainerTransaction">
+              <MappingFragment StoreEntitySet="ContainerTransactions">
+                <ScalarProperty Name="TransID" ColumnName="TransID" />
+                <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+                <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+                <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+                <ScalarProperty Name="ContainerDmgd" ColumnName="ContainerDmgd" />
+                <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+                <ScalarProperty Name="ContainerCode" ColumnName="ContainerCode" />
+                <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+                <ScalarProperty Name="VehicleNo" ColumnName="VehicleNo" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="BATNo" ColumnName="BATNo" />
+                <ScalarProperty Name="Displayed" ColumnName="Displayed" />
+                <ScalarProperty Name="DIRLocation" ColumnName="DIRLocation" />
+                <ScalarProperty Name="TrailerTransID" ColumnName="TrailerTransID" />
+                <ScalarProperty Name="SequnceOfContan" ColumnName="SequnceOfContan" />
+                <ScalarProperty Name="EmailImg" ColumnName="EmailImg" />
+                <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
+                <ScalarProperty Name="IsRotateImages" ColumnName="IsRotateImages" />
+                <ScalarProperty Name="CancelStatus" ColumnName="CancelStatus" />
+                <ScalarProperty Name="IsManualTransaction" ColumnName="IsManualTransaction" />
+                <ScalarProperty Name="IsReportCreated" ColumnName="IsReportCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContainerTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ContainerTypeMaster">
+              <MappingFragment StoreEntitySet="ContainerTypeMaster">
+                <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+                <ScalarProperty Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamageTransactions">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DamageTransaction">
+              <MappingFragment StoreEntitySet="DamageTransaction">
+                <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+                <ScalarProperty Name="RemarkCam1" ColumnName="RemarkCam1" />
+                <ScalarProperty Name="RemarkCam2" ColumnName="RemarkCam2" />
+                <ScalarProperty Name="RemarkCam3" ColumnName="RemarkCam3" />
+                <ScalarProperty Name="RemarkCam4" ColumnName="RemarkCam4" />
+                <ScalarProperty Name="RemarkCam5" ColumnName="RemarkCam5" />
+                <ScalarProperty Name="RemarkCam6" ColumnName="RemarkCam6" />
+                <ScalarProperty Name="RemarkCam7" ColumnName="RemarkCam7" />
+                <ScalarProperty Name="CommonRemark" ColumnName="CommonRemark" />
+                <ScalarProperty Name="DmgdTypeCam1" ColumnName="DmgdTypeCam1" />
+                <ScalarProperty Name="DmgdTypeCam2" ColumnName="DmgdTypeCam2" />
+                <ScalarProperty Name="DmgdTypeCam3" ColumnName="DmgdTypeCam3" />
+                <ScalarProperty Name="DmgdTypeCam4" ColumnName="DmgdTypeCam4" />
+                <ScalarProperty Name="DmgdTypeCam5" ColumnName="DmgdTypeCam5" />
+                <ScalarProperty Name="DmgdTypeCam6" ColumnName="DmgdTypeCam6" />
+                <ScalarProperty Name="DmgdTypeCam7" ColumnName="DmgdTypeCam7" />
+                <ScalarProperty Name="CommonDmgTypes" ColumnName="CommonDmgTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamageTransactionDetails">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DamageTransactionDetail">
+              <MappingFragment StoreEntitySet="DamageTransactionDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DmgDtlsID" ColumnName="DmgDtlsID" />
+                <ScalarProperty Name="DamageRemark" ColumnName="DamageRemark" />
+                <ScalarProperty Name="DamageTypes" ColumnName="DamageTypes" />
+                <ScalarProperty Name="CamPosID" ColumnName="CamPosID" />
+                <ScalarProperty Name="IsCommonRemark" ColumnName="IsCommonRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamageTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DamageTypeMaster">
+              <MappingFragment StoreEntitySet="DamageTypeMaster">
+                <ScalarProperty Name="DmgTypeid" ColumnName="DmgTypeid" />
+                <ScalarProperty Name="DmgTypeName" ColumnName="DmgTypeName" />
+                <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DesignationMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DesignationMaster">
+              <MappingFragment StoreEntitySet="DesignationMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DeviceMaster">
+              <MappingFragment StoreEntitySet="DeviceMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+                <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+                <ScalarProperty Name="DeviceIP" ColumnName="DeviceIP" />
+                <ScalarProperty Name="DeviceMACAddress" ColumnName="DeviceMACAddress" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypeDetailsMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DeviceTypeDetailsMaster">
+              <MappingFragment StoreEntitySet="DeviceTypeDetailsMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+                <ScalarProperty Name="PropertyKey" ColumnName="PropertyKey" />
+                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.DeviceTypeMaster">
+              <MappingFragment StoreEntitySet="DeviceTypeMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DeviceTypeName" ColumnName="DeviceTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaneMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LaneMaster">
+              <MappingFragment StoreEntitySet="LaneMaster">
+                <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+                <ScalarProperty Name="TypeOfGate" ColumnName="TypeOfGate" />
+                <ScalarProperty Name="LaneName" ColumnName="LaneName" />
+                <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+                <ScalarProperty Name="TransactionsEnabled" ColumnName="TransactionsEnabled" />
+                <ScalarProperty Name="IsBusy" ColumnName="IsBusy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationMaster">
+              <MappingFragment StoreEntitySet="LocationMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+                <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationTypeDetailsMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeDetailsMaster">
+              <MappingFragment StoreEntitySet="LocationTypeDetailsMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+                <ScalarProperty Name="PropertyKey" ColumnName="PropertyKey" />
+                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeMaster">
+              <MappingFragment StoreEntitySet="LocationTypeMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
+                <ScalarProperty Name="IsGate" ColumnName="IsGate" />
+                <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+                <ScalarProperty Name="IsTransactionEnabled" ColumnName="IsTransactionEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationTypeRoleMappingMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeRoleMappingMaster">
+              <MappingFragment StoreEntitySet="LocationTypeRoleMappingMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ProjectMaster">
+              <MappingFragment StoreEntitySet="ProjectMaster">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="DeployerFirm" ColumnName="DeployerFirm" />
+                <ScalarProperty Name="DeployeeFirm" ColumnName="DeployeeFirm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDesignationMappingMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.RoleDesignationMappingMaster">
+              <MappingFragment StoreEntitySet="RoleDesignationMappingMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.RoleMaster">
+              <MappingFragment StoreEntitySet="RoleMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleScreenMappings">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.RoleScreenMapping">
+              <MappingFragment StoreEntitySet="RoleScreenMapping">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScreenMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ScreenMaster">
+              <MappingFragment StoreEntitySet="ScreenMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="ScreenUrl" ColumnName="ScreenUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingLineMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ShippingLineMaster">
+              <MappingFragment StoreEntitySet="ShippingLineMaster">
+                <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+                <ScalarProperty Name="ShippingLineName" ColumnName="ShippingLineName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="faxno" ColumnName="faxno" />
+                <ScalarProperty Name="emailid1" ColumnName="emailid1" />
+                <ScalarProperty Name="emailid2" ColumnName="emailid2" />
+                <ScalarProperty Name="emailid3" ColumnName="emailid3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionApplicationTypeMappingMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.TransactionApplicationTypeMappingMaster">
+              <MappingFragment StoreEntitySet="TransactionApplicationTypeMappingMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionFieldMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.TransactionFieldMaster">
+              <MappingFragment StoreEntitySet="TransactionFieldMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="TransactionFieldName" ColumnName="TransactionFieldName" />
+                <ScalarProperty Name="TransactionFieldType" ColumnName="TransactionFieldType" />
+                <ScalarProperty Name="IsForeignKey" ColumnName="IsForeignKey" />
+                <ScalarProperty Name="ForeignKeyTableName" ColumnName="ForeignKeyTableName" />
+                <ScalarProperty Name="ForeignKeyColumnName" ColumnName="ForeignKeyColumnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.TransactionMaster">
+              <MappingFragment StoreEntitySet="TransactionMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLoggedin" ColumnName="IsLoggedin" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationConfigs">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ApplicationConfig">
+              <MappingFragment StoreEntitySet="ApplicationConfig">
+                <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaneDeviceMappingMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LaneDeviceMappingMaster">
+              <MappingFragment StoreEntitySet="LaneDeviceMappingMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LaneID" ColumnName="LaneID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationTypeDeviceTypeMappingMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.LocationTypeDeviceTypeMappingMaster">
+              <MappingFragment StoreEntitySet="LocationTypeDeviceTypeMappingMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+                <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerCodeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.OwnerCodeMaster">
+              <MappingFragment StoreEntitySet="OwnerCodeMaster">
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+                <ScalarProperty Name="CreatorUserID" ColumnName="CreatorUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CameraPositionID" FunctionName="DIMContainerDB_Revised_DevModel.Store.CameraPositionID" />
+          <FunctionImportMapping FunctionImportName="fetch_image_details" FunctionName="DIMContainerDB_Revised_DevModel.Store.fetch_image_details" />
+          <FunctionImportMapping FunctionImportName="savecamerapositionngdata" FunctionName="DIMContainerDB_Revised_DevModel.Store.savecamerapositionngdata" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_GetMissingTransactions" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_GetMissingTransactions" />
+          <FunctionImportMapping FunctionImportName="sp_GetScreensFromRoleID" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_GetScreensFromRoleID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sp_GetScreensFromRoleID_Result">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="ScreenUrl" ColumnName="ScreenUrl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DIMContainerDB_Revised_DevModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MapScreensToRoles" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_MapScreensToRoles" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_StoreDamageDetails" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_StoreDamageDetails" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_UserLogout" FunctionName="DIMContainerDB_Revised_DevModel.Store.sp_UserLogout" />
+          <FunctionImportMapping FunctionImportName="spsavecameradata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spsavecameradata" />
+          <FunctionImportMapping FunctionImportName="spsavelanedata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spsavelanedata" />
+          <FunctionImportMapping FunctionImportName="spsaveshippinglinedata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spsaveshippinglinedata" />
+          <FunctionImportMapping FunctionImportName="spupdatecamerapositioningdata" FunctionName="DIMContainerDB_Revised_DevModel.Store.spupdatecamerapositioningdata" />
+          <FunctionImportMapping FunctionImportName="updatecamera" FunctionName="DIMContainerDB_Revised_DevModel.Store.updatecamera" />
+          <FunctionImportMapping FunctionImportName="UpdateEmptytransaction" FunctionName="DIMContainerDB_Revised_DevModel.Store.UpdateEmptytransaction" />
+          <FunctionImportMapping FunctionImportName="updatelanedata" FunctionName="DIMContainerDB_Revised_DevModel.Store.updatelanedata" />
+          <FunctionImportMapping FunctionImportName="updateshippingline" FunctionName="DIMContainerDB_Revised_DevModel.Store.updateshippingline" />
+          <EntitySetMapping Name="ProjectTypeMasters">
+            <EntityTypeMapping TypeName="DIMContainerDB_Revised_DevModel.ProjectTypeMaster">
+              <MappingFragment StoreEntitySet="ProjectTypeMaster">
+                <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
